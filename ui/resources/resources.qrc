@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RCC>
+    <qresource prefix="/">
+        <file>icons/logo.png</file>
+        <file>icons/login.png</file>
+        <file>icons/serial.png</file>
+        <file>icons/motion.png</file>
+        <file>icons/io.png</file>
+        <file>icons/mes.png</file>
+        <file>icons/product.png</file>
+        <file>icons/chart-bar.png</file>
+        <file>icons/arrow-down.png</file>
+        <file>icons/arrow-up.png</file>
+        <file>icons/AI.png</file>
+        <file>icons/cameraSetting.png</file>
+        <file>icons/visual.png</file>
+        <file>icons/gray_io_icon.png</file>
+        <file>icons/gree_io_icon.png</file>
+        <file>icons/red_io_icon.png</file>
+        <file>icons/start.png</file>
+        <file>icons/stop.png</file>
+        <file>icons/pause.png</file>
+        <file>icons/autoMode.png</file>
+        <file>icons/debugMode.png</file>
+        <file>icons/offlineMode.png</file>
+        <file>icons/onlineMode.png</file>
+        <file>icons/factoryMode.png</file>
+<!--        <file>'gif/📷 打开相机.gif'</file>-->
+    </qresource>
+</RCC>

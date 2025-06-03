@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VisualProcess</class>
+ <widget class="QWidget" name="VisualProcess">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1397</width>
+    <height>962</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>图像处理工具</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+/* 主窗口样式 */
+QWidget#VisualProcess {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1,
+                               stop: 0 #f5f7fa, stop: 1 #c3cfe2);
+    border-radius: 10px;
+}
+
+/* 组合框样式 */
+QComboBox {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                               stop: 0 #ffffff, stop: 1 #f8f9fa);
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #495057;
+    min-height: 35px;
+}
+
+QComboBox:hover {
+    border-color: #007bff;
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                               stop: 0 #ffffff, stop: 1 #e3f2fd);
+}
+
+QComboBox:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 25px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/icons/arrow_down.png);
+    width: 12px;
+    height: 8px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #ffffff;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    selection-background-color: #007bff;
+    selection-color: white;
+    padding: 4px;
+}
+
+/* 分组框样式 */
+QGroupBox {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                               stop: 0 #ffffff, stop: 1 #f8f9fa);
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #495057;
+    margin-top: 12px;
+    padding-top: 8px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 5px 15px;
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
+                               stop: 0 #007bff, stop: 1 #0056b3);
+    color: white;
+    border-radius: 6px;
+    left: 10px;
+    top: -8px;
+}
+
+/* 框架样式 */
+QFrame#frameControls {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                               stop: 0 #ffffff, stop: 1 #f1f3f4);
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    margin: 5px;
+}
+
+/* 列表视图样式 */
+QListWidget {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                               stop: 0 #ffffff, stop: 1 #fafbfc);
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 14px;
+    font-family: &quot;Consolas, Monaco, monospace&quot;;
+    alternate-background-color: #f8f9fa;
+}
+
+QListWidget::item {
+    border: 1px solid #E0E0E0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin: 3px 2px;
+    min-height: 25px;
+}
+
+QListWidget::item:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                               stop: 0 #e3f2fd, stop: 1 #bbdefb);
+    border: 1px solid #42a5f5;
+}
+
+QListWidget::item:selected {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                               stop: 0 #2196f3, stop: 1 #1976d2);
+    color: white;
+    border: 1px solid #1565c0;
+}
+
+/* 标签样式 */
+QLabel#label_ImageDisplay {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1,
+                               stop: 0 #ffffff, stop: 0.5 #f5f5f5, stop: 1 #e0e0e0);
+    border: 3px dashed #bdbdbd;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #757575;
+}
+
+QLabel#label_ImageDisplay:hover {
+    border-color: #42a5f5;
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1,
+                               stop: 0 #e3f2fd, stop: 0.5 #f0f8ff, stop: 1 #e1f5fe);
+}
+
+/* 工具按钮基础样式 */
+QToolButton {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                               stop: 0 #ffffff, stop: 1 #f0f0f0);
+    border: 2px solid #d0d0d0;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333333;
+    min-height: 40px;
+    min-width: 120px;
+}
+
+QToolButton:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                               stop: 0 #e3f2fd, stop: 1 #bbdefb);
+    border: 2px solid #42a5f5;
+    color: #1565c0;
+    border-radius: 12px;
+}
+
+QToolButton:pressed {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                               stop: 0 #1976d2, stop: 1 #1565c0);
+    border: 2px solid #0d47a1;
+    color: white;
+    border-radius: 12px;
+}
+
+QToolButton:checked {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                               stop: 0 #4caf50, stop: 1 #388e3c);
+    border-color: #2e7d32;
+    color: white;
+}
+
+/* 标签页样式 */
+QTabWidget::pane {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                               stop: 0 #ffffff, stop: 1 #f8f9fa);
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+QTabWidget::tab-bar {
+    alignment: center;
+}
+
+QTabBar::tab {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                               stop: 0 #f8f9fa, stop: 1 #e9ecef);
+    border: 2px solid #dee2e6;
+    border-bottom: none;
+    padding: 10px 20px;
+    margin-right: 2px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    font-weight: 500;
+    color: #6c757d;
+}
+
+QTabBar::tab:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                               stop: 0 #e3f2fd, stop: 1 #bbdefb);
+    color: #1565c0;
+}
+
+QTabBar::tab:selected {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                               stop: 0 #2196f3, stop: 1 #1976d2);
+    color: white;
+    border-color: #1565c0;
+}
+
+/* 滚动条样式 */
+QScrollBar:vertical {
+    background: #f0f0f0;
+    width: 12px;
+    border-radius: 6px;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
+                               stop: 0 #b0b0b0, stop: 1 #a0a0a0);
+    border-radius: 6px;
+    min-height: 30px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
+                               stop: 0 #909090, stop: 1 #808080);
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+}
+   </string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,2">
+   <property name="spacing">
+    <number>5</number>
+   </property>
+   <property name="leftMargin">
+    <number>5</number>
+   </property>
+   <property name="topMargin">
+    <number>5</number>
+   </property>
+   <property name="rightMargin">
+    <number>5</number>
+   </property>
+   <property name="bottomMargin">
+    <number>5</number>
+   </property>
+   <item>
+    <layout class="QGridLayout" name="gridLayout_ImageDisplay">
+     <property name="spacing">
+      <number>5</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_ImageDisplay">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>200</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>📷 图像显示区域
+点击加载图像</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QFrame" name="frameControls">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>500</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>600</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,2,3">
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QComboBox" name="comboBoxModels">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>55</height>
+         </size>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>6</width>
+          <height>6</height>
+         </size>
+        </property>
+        <item>
+         <property name="text">
+          <string>🎯 模式选择</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>📱 读码</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>📏 测量</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>🔍 检测</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBoxParams">
+        <property name="title">
+         <string>⚙️ 参数调节</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <property name="spacing">
+          <number>10</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="vBoxLayout_Params"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBoxProcess">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>250</height>
+         </size>
+        </property>
+        <property name="title">
+         <string>📋 流程日志</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <property name="spacing">
+          <number>5</number>
+         </property>
+         <property name="leftMargin">
+          <number>5</number>
+         </property>
+         <property name="topMargin">
+          <number>5</number>
+         </property>
+         <property name="rightMargin">
+          <number>5</number>
+         </property>
+         <property name="bottomMargin">
+          <number>5</number>
+         </property>
+         <item>
+          <widget class="QListWidget" name="workflows_listView">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>1</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>200</height>
+            </size>
+           </property>
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

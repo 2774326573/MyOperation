@@ -1,0 +1,1994 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SerialDialog</class>
+ <widget class="QWidget" name="SerialDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>979</width>
+    <height>701</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>900</width>
+    <height>650</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>串口通信调试工具</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: #f5f5f5;
+    font-family: &quot;Microsoft YaHei&quot;, Arial, sans-serif;
+    font-size: 10pt;
+}
+
+QGroupBox {
+    font-weight: bold;
+    border: 2px solid #cccccc;
+    border-radius: 8px;
+    margin-top: 1ex;
+    padding-top: 10px;
+    background-color: white;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 5px 0 5px;
+    color: #2c3e50;
+}
+
+QPushButton {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    min-height: 30px;
+}
+
+QPushButton:hover {
+    background-color: #2980b9;
+}
+
+QPushButton:pressed {
+    background-color: #21618c;
+}
+
+QPushButton:disabled {
+    background-color: #bdc3c7;
+}
+
+QComboBox {
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    padding: 5px;
+    background-color: white;
+    min-height: 25px;
+}
+
+QComboBox:focus {
+    border-color: #3498db;
+}
+
+QLabel {
+    color: #2c3e50;
+}
+
+QTextEdit {
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    background-color: white;
+    font-family: &quot;Consolas&quot;, &quot;Courier New&quot;, monospace;
+}
+
+QTextEdit:focus {
+    border-color: #3498db;
+}
+
+QLineEdit {
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    padding: 5px;
+    background-color: white;
+    min-height: 25px;
+}
+
+QLineEdit:focus {
+    border-color: #3498db;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>15</number>
+   </property>
+   <property name="leftMargin">
+    <number>15</number>
+   </property>
+   <property name="topMargin">
+    <number>15</number>
+   </property>
+   <property name="rightMargin">
+    <number>15</number>
+   </property>
+   <property name="bottomMargin">
+    <number>15</number>
+   </property>
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>120</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>串口配置</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <property name="horizontalSpacing">
+         <number>15</number>
+        </property>
+        <property name="verticalSpacing">
+         <number>10</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_com">
+          <property name="minimumSize">
+           <size>
+            <width>60</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>串口号:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="comboBox_com">
+          <property name="minimumSize">
+           <size>
+            <width>120</width>
+            <height>39</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="label_baudrate">
+          <property name="minimumSize">
+           <size>
+            <width>60</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>波特率:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QComboBox" name="comboBox_baudrate">
+          <property name="minimumSize">
+           <size>
+            <width>120</width>
+            <height>39</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_databits">
+          <property name="text">
+           <string>数据位:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QComboBox" name="comboBox_databits">
+          <property name="minimumSize">
+           <size>
+            <width>120</width>
+            <height>39</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QLabel" name="label_parity">
+          <property name="text">
+           <string>校验位:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QComboBox" name="comboBox_parity">
+          <property name="minimumSize">
+           <size>
+            <width>120</width>
+            <height>39</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="4">
+         <widget class="QLabel" name="label_stopbits">
+          <property name="text">
+           <string>停止位:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="5">
+         <widget class="QComboBox" name="comboBox_stopbits">
+          <property name="minimumSize">
+           <size>
+            <width>120</width>
+            <height>39</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="spacing">
+         <number>10</number>
+        </property>
+        <item>
+         <widget class="QPushButton" name="pushButton_refresh">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>46</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>刷新端口</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_saveConfig">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>46</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>保存配置</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_open">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>46</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>打开串口</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_close">
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>46</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>关闭串口</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="mainContentLayout">
+     <property name="spacing">
+      <number>15</number>
+     </property>
+     <item>
+      <layout class="QVBoxLayout" name="leftPanelLayout">
+       <item>
+        <layout class="QHBoxLayout" name="plcPanelLayout">
+         <property name="spacing">
+          <number>10</number>
+         </property>
+         <item>
+          <widget class="QGroupBox" name="groupBox_input">
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>120</height>
+            </size>
+           </property>
+           <property name="title">
+            <string>输入点状态 (X)</string>
+           </property>
+           <layout class="QVBoxLayout" name="inputLayout">
+            <item>
+             <layout class="QGridLayout" name="gridLayout_input">
+              <property name="spacing">
+               <number>8</number>
+              </property>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_X00">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>X00</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="led_X00">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="label_X01">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>X01</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="led_X01">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QLabel" name="label_X02">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>X02</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLabel" name="led_X02">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="QLabel" name="label_X03">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>X03</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QLabel" name="led_X03">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="4">
+               <widget class="QLabel" name="label_X04">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>X04</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="QLabel" name="led_X04">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="5">
+               <widget class="QLabel" name="label_X05">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>X05</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QLabel" name="led_X05">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="6">
+               <widget class="QLabel" name="label_X06">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>X06</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="6">
+               <widget class="QLabel" name="led_X06">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="7">
+               <widget class="QLabel" name="label_X07">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>X07</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="7">
+               <widget class="QLabel" name="led_X07">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_X10">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>X10</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="led_X10">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLabel" name="label_X11">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>X11</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLabel" name="led_X11">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLabel" name="label_X12">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>X12</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QLabel" name="led_X12">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QLabel" name="label_X13">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>X13</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QLabel" name="led_X13">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QLabel" name="label_X14">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>X14</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QLabel" name="led_X14">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QLabel" name="label_X15">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>X15</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
+               <widget class="QLabel" name="led_X15">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6">
+               <widget class="QLabel" name="label_X16">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>X16</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="6">
+               <widget class="QLabel" name="led_X16">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="7">
+               <widget class="QLabel" name="label_X17">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>X17</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="7">
+               <widget class="QLabel" name="led_X17">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_output">
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>120</height>
+            </size>
+           </property>
+           <property name="title">
+            <string>输出点状态 (Y)</string>
+           </property>
+           <layout class="QVBoxLayout" name="outputLayout">
+            <item>
+             <layout class="QGridLayout" name="gridLayout_output">
+              <property name="spacing">
+               <number>8</number>
+              </property>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_Y00">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>Y00</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="led_Y00">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLabel" name="label_Y01">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>Y01</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="led_Y01">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QLabel" name="label_Y02">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>Y02</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QLabel" name="led_Y02">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="3">
+               <widget class="QLabel" name="label_Y03">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>Y03</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="3">
+               <widget class="QLabel" name="led_Y03">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="4">
+               <widget class="QLabel" name="label_Y04">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>Y04</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="4">
+               <widget class="QLabel" name="led_Y04">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="5">
+               <widget class="QLabel" name="label_Y05">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>Y05</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="5">
+               <widget class="QLabel" name="led_Y05">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="6">
+               <widget class="QLabel" name="label_Y06">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>Y06</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="6">
+               <widget class="QLabel" name="led_Y06">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="7">
+               <widget class="QLabel" name="label_Y07">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>Y07</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="7">
+               <widget class="QLabel" name="led_Y07">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_Y10">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>Y10</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="led_Y10">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLabel" name="label_Y11">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>Y11</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLabel" name="led_Y11">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLabel" name="label_Y12">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>Y12</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QLabel" name="led_Y12">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="3">
+               <widget class="QLabel" name="label_Y13">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>Y13</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="3">
+               <widget class="QLabel" name="led_Y13">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="4">
+               <widget class="QLabel" name="label_Y14">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>Y14</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="4">
+               <widget class="QLabel" name="led_Y14">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="5">
+               <widget class="QLabel" name="label_Y15">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>Y15</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="5">
+               <widget class="QLabel" name="led_Y15">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="6">
+               <widget class="QLabel" name="label_Y16">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>Y16</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="6">
+               <widget class="QLabel" name="led_Y16">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="7">
+               <widget class="QLabel" name="label_Y17">
+                <property name="styleSheet">
+                 <string notr="true">font-size: 9pt; font-weight: bold;</string>
+                </property>
+                <property name="text">
+                 <string>Y17</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="7">
+               <widget class="QLabel" name="led_Y17">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #95a5a6;
+border-radius: 15px;
+border: 2px solid #7f8c8d;</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_register">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>150</height>
+          </size>
+         </property>
+         <property name="title">
+          <string>寄存器读写</string>
+         </property>
+         <layout class="QVBoxLayout" name="registerLayout">
+          <item>
+           <layout class="QGridLayout" name="gridLayout_register">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_regType">
+              <property name="text">
+               <string>寄存器类型:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QComboBox" name="comboBox_regType">
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>39</height>
+               </size>
+              </property>
+              <item>
+               <property name="text">
+                <string>D寄存器</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>M寄存器</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>X寄存器</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Y寄存器</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QLabel" name="label_regAddr">
+              <property name="text">
+               <string>地址:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QLineEdit" name="lineEdit_regAddr">
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>39</height>
+               </size>
+              </property>
+              <property name="placeholderText">
+               <string>如: 100</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="4">
+             <widget class="QLabel" name="label_regCount">
+              <property name="text">
+               <string>数量:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="5">
+             <widget class="QLineEdit" name="lineEdit_regCount">
+              <property name="minimumSize">
+               <size>
+                <width>60</width>
+                <height>39</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>1</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_regValue">
+              <property name="text">
+               <string>写入值:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1" colspan="2">
+             <widget class="QLineEdit" name="lineEdit_regValue">
+              <property name="placeholderText">
+               <string>要写入的值</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="registerButtonLayout">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="pushButton_readReg">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>46</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>读取寄存器</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_writeReg">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>46</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>写入寄存器</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_clearLog">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>46</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>清空日志</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox_communication">
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="title">
+        <string>通信日志</string>
+       </property>
+       <layout class="QVBoxLayout" name="communicationLayout">
+        <item>
+         <widget class="QTextEdit" name="textEdit_log">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>200</height>
+           </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="placeholderText">
+           <string>通信日志将在这里显示...</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="sendLayout">
+          <property name="spacing">
+           <number>10</number>
+          </property>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_send">
+            <property name="placeholderText">
+             <string>输入要发送的数据</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_send">
+            <property name="minimumSize">
+             <size>
+              <width>60</width>
+              <height>46</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>发送</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="formatLayout">
+          <item>
+           <widget class="QCheckBox" name="checkBox_hexSend">
+            <property name="text">
+             <string>HEX发送</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_hexReceive">
+            <property name="text">
+             <string>HEX显示</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_autoScroll">
+            <property name="text">
+             <string>自动滚动</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_status">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>60</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>80</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>状态信息</string>
+     </property>
+     <layout class="QHBoxLayout" name="statusLayout">
+      <item>
+       <widget class="QLabel" name="label_status">
+        <property name="styleSheet">
+         <string notr="true">color: #e74c3c; font-weight: bold;</string>
+        </property>
+        <property name="text">
+         <string>状态: 未连接</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_rxCount">
+        <property name="text">
+         <string>接收: 0 字节</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_txCount">
+        <property name="text">
+         <string>发送: 0 字节</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_resetCount">
+        <property name="minimumSize">
+         <size>
+          <width>80</width>
+          <height>46</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>重置计数</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
