@@ -327,39 +327,41 @@ void visualWorkThread::onProcessImage(const HObject& processedImage)
   }
   const HObject image = processedImage;
   processModelParam(); // 处理模型参数
-  
+
   // 检查模板是否已正确加载
   if (visual_modelId.Length() == 0)
   {
     LOG_ERROR("❌ 模板未正确加载，无法进行匹配");
     return;
   }
-  
+
   if (image.IsInitialized() == true)
   {
     HTuple Crow, Ccol, Cangle, Cscore, AffHomMat2D;
-    
+
     LOG_INFO("🔍 开始进行模板匹配...");
     LOG_INFO(QString("📊 模板参数: Row=%1, Column=%2, Angle=%3")
         .arg(visual_Row.D()).arg(visual_Column.D()).arg(visual_Angle.D()));
-    
+
     // 检查图像和模板的基本信息
     HTuple ImageWidth, ImageHeight, ImageChannels;
     GetImageSize(image, &ImageWidth, &ImageHeight);
     CountChannels(image, &ImageChannels);
-    LOG_INFO(QString("📷 图像信息: 宽度=%1, 高度=%2, 通道数=%3").arg(ImageWidth[0].I()).arg(ImageHeight[0].I()).arg(ImageChannels[0].I()));
-    
+    LOG_INFO(
+        QString("📷 图像信息: 宽度=%1, 高度=%2, 通道数=%3").arg(ImageWidth[0].I()).arg(ImageHeight[0].I()).arg(ImageChannels[0].I()
+        ));
+
     // 预处理图像以提高匹配成功率
     HObject processedImage = image;
-    try 
+    try
     {
       // 如果是彩色图像，转换为灰度图像
-      if (ImageChannels[0].I() > 1) 
+      if (ImageChannels[0].I() > 1)
       {
         LOG_INFO("🔄 转换彩色图像为灰度图像...");
         Rgb1ToGray(image, &processedImage);
       }
-      
+
       // 可选：增强对比度
       // HObject enhancedImage;
       // Emphasize(processedImage, &enhancedImage, 7, 7, 1.0);
@@ -370,44 +372,44 @@ void visualWorkThread::onProcessImage(const HObject& processedImage)
       LOG_WARNING(QString("⚠️ 图像预处理失败，使用原图像: %1").arg(except.ErrorMessage().Text()));
       processedImage = image;
     }
-    
+
     try
     {
       // 查找模板 - 使用更保守的参数避免挂起
       LOG_INFO("🎯 正在执行 FindShapeModel...");
-      
+
       // 首先尝试快速匹配（高greediness，低精度）
       LOG_INFO("⚡ 尝试快速匹配模式...");
-      FindShapeModel(processedImage, visual_modelId, 
-                     -0.39, 0.78,    // 角度范围: ±22.5度
-                     0.3,            // 最小分数 (降低要求)
-                     1,              // 最大匹配数
-                     0.5,            // 最大重叠
+      FindShapeModel(processedImage, visual_modelId,
+                     -0.39, 0.78, // 角度范围: ±22.5度
+                     0.3, // 最小分数 (降低要求)
+                     1, // 最大匹配数
+                     0.5, // 最大重叠
                      "least_squares", // 子像素精度
-                     3,              // 金字塔层数 (减少层数加快速度)
-                     0.9,            // 贪婪度 (提高速度)
+                     3, // 金字塔层数 (减少层数加快速度)
+                     0.9, // 贪婪度 (提高速度)
                      &Crow, &Ccol, &Cangle, &Cscore);
-      
+
       LOG_INFO(QString("✅ FindShapeModel 执行完成，找到 %1 个匹配").arg(Crow.Length()));
-      
+
       // 检查是否找到模板
       if (Crow.Length() == 0)
       {
         LOG_WARNING("⚠️ 快速匹配未找到结果，尝试精确匹配模式...");
-        
+
         // 如果快速匹配失败，尝试更精确的匹配
-        try 
+        try
         {
-          FindShapeModel(processedImage, visual_modelId, 
-                         -0.79, 1.57,    // 更大角度范围: ±45度 到 90度
-                         0.2,            // 更低分数阈值
-                         3,              // 更多匹配候选
-                         0.7,            // 允许更多重叠
+          FindShapeModel(processedImage, visual_modelId,
+                         -0.79, 1.57, // 更大角度范围: ±45度 到 90度
+                         0.2, // 更低分数阈值
+                         3, // 更多匹配候选
+                         0.7, // 允许更多重叠
                          "least_squares",
-                         4,              // 增加金字塔层数
-                         0.7,            // 降低贪婪度获得更好精度
+                         4, // 增加金字塔层数
+                         0.7, // 降低贪婪度获得更好精度
                          &Crow, &Ccol, &Cangle, &Cscore);
-          
+
           LOG_INFO(QString("🔍 精确匹配完成，找到 %1 个匹配").arg(Crow.Length()));
         }
         catch (const HalconCpp::HException& except)
@@ -415,7 +417,7 @@ void visualWorkThread::onProcessImage(const HObject& processedImage)
           LOG_ERROR(QString("❌ 精确匹配也失败: %1").arg(except.ErrorMessage().Text()));
         }
       }
-      
+
       if (Crow.Length() == 0)
       {
         LOG_WARNING("❌ 未找到匹配的模板");
@@ -424,21 +426,21 @@ void visualWorkThread::onProcessImage(const HObject& processedImage)
         emit sendImageWithDisplayObjects(image, emptyDisplayObjects);
         return;
       }
-      
+
       LOG_INFO(QString("✅ 找到模板匹配: Row=%1, Col=%2, Angle=%3, Score=%4")
           .arg(Crow[0].D()).arg(Ccol[0].D()).arg(Cangle[0].D()).arg(Cscore[0].D()));
-      
+
       // 计算仿射变换矩阵
       LOG_INFO("🔄 正在计算仿射变换矩阵...");
       VectorAngleToRigid(visual_Row, visual_Column, visual_Angle, Crow[0], Ccol[0], Cangle[0], &AffHomMat2D);
-      
+
       LOG_INFO("✅ 仿射变换矩阵计算成功");
 
       // 读取原始测量区域
       HObject Measyre_Rect1, Measyre_Rect2;
       QString Measyre_Rect1_Path = MeasureReadPath + "/m_Measyre_Rect1.hobj";
       QString Measyre_Rect2_Path = MeasureReadPath + "/m_Measyre_Rect2.hobj";
-      
+
       try
       {
         ReadRegion(&Measyre_Rect1, Measyre_Rect1_Path.toLatin1().data());
@@ -455,12 +457,12 @@ void visualWorkThread::onProcessImage(const HObject& processedImage)
       HObject TransformedRect1, TransformedRect2;
       AffineTransRegion(Measyre_Rect1, &TransformedRect1, AffHomMat2D, "nearest_neighbor");
       AffineTransRegion(Measyre_Rect2, &TransformedRect2, AffHomMat2D, "nearest_neighbor");
-      
+
       LOG_INFO("🎯 测量区域已成功映射到模板位置");
 
       // 🎯 创建显示对象列表
       QList<DisplayObjectInfo> displayObjects;
-      
+
       // 添加变换后的区域（绿色显示）
       displayObjects.append(DisplayObjectInfo(TransformedRect1, "green", 2.0));
       displayObjects.append(DisplayObjectInfo(TransformedRect2, "green", 2.0));
@@ -515,7 +517,8 @@ void visualWorkThread::onProcessImage(const HObject& processedImage)
           double centroidDistance = workThreadHalcon->calculatePointDistance(
               centroid1.X, centroid1.Y, centroid2.X, centroid2.Y);
 
-          QString msg = QString("🎯 映射区域测量结果:\n最小距离: %1px\n最大距离: %2px\n重心距离: %3px\n区域1面积: %4px²\n区域2面积: %5px²\n模板匹配得分: %6")
+          QString msg = QString(
+                            "🎯 映射区域测量结果:\n最小距离: %1px\n最大距离: %2px\n重心距离: %3px\n区域1面积: %4px²\n区域2面积: %5px²\n模板匹配得分: %6")
                         .arg(QString::number(DisMin.D(), 'f', 2))
                         .arg(QString::number(DisMax.D(), 'f', 2))
                         .arg(QString::number(centroidDistance, 'f', 2))
@@ -622,7 +625,7 @@ void visualWorkThread::processModelParam()
       {
         modelPath = files[0]; // 只取最新的一个.shm文件
         LOG_INFO("modelPath : " + modelPath);
-        
+
         try
         {
           // 读取模板文件
@@ -676,14 +679,14 @@ void visualWorkThread::processModelParam()
           ReadTuple(dataFilePath.toLatin1().data(), &DataTuple);
           LOG_INFO(QString("✅ 成功读取data文件: %1，数据长度: %2")
               .arg(fileInfo.fileName()).arg(DataTuple.Length()));
-          
+
           // 验证数据长度并解析参数
           if (DataTuple.Length() >= 3)
           {
             visual_Row = DataTuple[0];
-            visual_Column = DataTuple[1]; 
+            visual_Column = DataTuple[1];
             visual_Angle = DataTuple[2];
-            
+
             LOG_INFO(QString("📊 模板参数解析成功: Row=%1, Column=%2, Angle=%3")
                 .arg(visual_Row.D()).arg(visual_Column.D()).arg(visual_Angle.D()));
           }

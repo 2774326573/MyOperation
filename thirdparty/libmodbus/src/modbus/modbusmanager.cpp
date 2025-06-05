@@ -2,6 +2,7 @@
 #include "../../inc/modbus/serial_diagnostic.h"
 #include <QSerialPortInfo>
 #include <QSerialPort>
+#include <errno.h>
 
 #define LOG_INFO(msg) qDebug() << "[INFO]" << msg
 #define LOG_ERROR(msg) qDebug() << "[ERROR]" << msg
@@ -41,6 +42,31 @@ ModbusManager::ModbusManager(QObject* parent): QObject(parent)
 ModbusManager::~ModbusManager()
 {
     disconnect();
+}
+
+// 辅助函数：将整数校验位转换为字符校验位
+char ModbusManager::convertParityToChar(int parity)
+{
+    switch (parity) {
+        case 0: return 'N'; // QSerialPort::NoParity
+        case 1: return 'O'; // QSerialPort::OddParity  
+        case 2: return 'E'; // QSerialPort::EvenParity
+        case 3: return 'S'; // QSerialPort::SpaceParity
+        case 4: return 'M'; // QSerialPort::MarkParity
+        default: 
+            LOG_WARN("未知的校验位值，使用无校验(N)");
+            return 'N'; // 默认无校验
+    }
+}
+
+// 重载版本：接受整数校验位参数，内部转换为字符
+bool ModbusManager::connectRTU(const QString& port, int baudRate, int dataBits, int parity, int stopBits)
+{
+    // 将整数校验位转换为字符校验位
+    char parityChar = convertParityToChar(parity);
+    
+    // 调用原始的字符版本
+    return connectRTU(port, baudRate, dataBits, parityChar, stopBits);
 }
 
 bool ModbusManager::connectRTU(const QString& port, int baudRate, int dataBits, char parity, int stopBits)
@@ -108,8 +134,7 @@ bool ModbusManager::connectRTU(const QString& port, int baudRate, int dataBits, 
     m_rtuDataBits    = dataBits;            // 数据位          (data bits)
     m_rtuParity      = parity;              // 校验位          (parity)
     m_rtuStopBits    = stopBits;            // 停止位          (stop bits)
-    
-    // 记录连接参数
+      // 记录连接参数
     LOG_INFO(tr("RTU连接参数 - 端口: %1, 波特率: %2, 数据位: %3, 校验: %4, 停止位: %5")
              .arg(m_rtuPort).arg(m_rtuBaudRate).arg(m_rtuDataBits).arg(m_rtuParity).arg(m_rtuStopBits));
     
@@ -123,16 +148,30 @@ bool ModbusManager::connectRTU(const QString& port, int baudRate, int dataBits, 
             windowsPortName = "\\\\.\\" + m_rtuPort;
         }
     }
+      LOG_INFO(tr("使用串口名称: %1 (原始: %2)").arg(windowsPortName).arg(m_rtuPort));
+    LOG_INFO(tr("RTU参数: 波特率=%1, 数据位=%2, 校验=%3, 停止位=%4")
+             .arg(m_rtuBaudRate).arg(m_rtuDataBits).arg(m_rtuParity).arg(m_rtuStopBits));
     
-    LOG_INFO(tr("使用串口名称: %1 (原始: %2)").arg(windowsPortName).arg(m_rtuPort));
-    
+    // 清除errno以确保能正确捕获错误
+    errno = 0;
     m_modbusCtx = modbus_new_rtu(windowsPortName.toStdString().c_str(), m_rtuBaudRate, m_rtuParity, m_rtuDataBits,
                                  m_rtuStopBits);
     // 检查上下文是否创建成功 (check if context is created successfully)
     if (m_modbusCtx == nullptr)
     {
-        setLastError(tr("无法创建Modbus RTU 上下文"));
-        LOG_ERROR(tr("libmodbus上下文创建失败"));
+        QString errorMsg = QString::fromLocal8Bit(modbus_strerror(errno));
+        if (errorMsg.isEmpty() || errorMsg == "No error") {
+            errorMsg = tr("未知错误 - 可能是参数无效或系统资源不足");
+        }
+        
+        QString detailedError = tr("无法创建Modbus RTU 上下文: %1 (errno: %2)")
+                               .arg(errorMsg).arg(errno);
+        setLastError(detailedError);
+        LOG_ERROR(tr("libmodbus上下文创建失败 - %1").arg(detailedError));
+        
+        // 输出更多诊断信息
+        LOG_ERROR(tr("参数详情 - 串口: %1, 波特率: %2, 校验: %3, 数据位: %4, 停止位: %5")
+                  .arg(windowsPortName).arg(m_rtuBaudRate).arg(m_rtuParity).arg(m_rtuDataBits).arg(m_rtuStopBits));
         return false;
     }
 
@@ -194,8 +233,7 @@ bool ModbusManager::connectRTU(const QString& port, int baudRate, int dataBits, 
         LOG_WARN(tr("Modbus通信测试失败: %1 (这可能是正常的，如果地址0不存在)").arg(modbus_strerror(errno)));
         LOG_INFO(tr("串口连接成功，但建议检查设备地址和从机ID设置"));
     }
-    
-    emit connected(); // 发送连接成功信号 (emit connected signal)
+      emit connected(); // 发送连接成功信号 (emit connected signal)
     LOG_INFO(tr("=== Modbus RTU连接成功: %1 ===").arg(m_rtuPort)); // 输出连接成功信息 (output connection success message)
     return true;
 }
