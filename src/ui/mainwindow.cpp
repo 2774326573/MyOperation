@@ -404,7 +404,6 @@ void Mainwindow::setupButtonStyle(QToolButton* button, const QString& normalColo
 {
   if (!button)
     return;
-
   // Qt样式表，移除不支持的CSS3属性
   QString styleSheet = QString(
       "QToolButton {"
@@ -419,13 +418,13 @@ void Mainwindow::setupButtonStyle(QToolButton* button, const QString& normalColo
       "  min-height: 32px;"
       "}"
       "QToolButton:hover {"
-      "  background-color: %2;"
-      "  border: 2px solid %2;"
+      "  background-color: %1;"
+      "  border: 2px solid %1;"
       "  color: white;"
       "}"
       "QToolButton:pressed {"
-      "  background-color: %3;"
-      "  border: 2px solid %3;"
+      "  background-color: %2;"
+      "  border: 2px solid %2;"
       "  color: white;"
       "}"
       "QToolButton:disabled {"
@@ -433,7 +432,7 @@ void Mainwindow::setupButtonStyle(QToolButton* button, const QString& normalColo
       "  border: 2px solid #D0D0D0;"
       "  color: #808080;"
       "}"
-      ).arg(normalColor, hoverColor, pressedColor);
+      ).arg(hoverColor, pressedColor);
 
   button->setStyleSheet(styleSheet);
 

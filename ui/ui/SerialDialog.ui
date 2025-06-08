@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>979</width>
+    <width>1430</width>
     <height>701</height>
    </rect>
   </property>
@@ -343,12 +343,12 @@ QLineEdit:focus {
         <item>
          <widget class="QLabel" name="label_stopbits_3">
           <property name="text">
-           <string>设置超时时间:</string>
+           <string>响应超时:</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_timeOut">
+         <widget class="QLineEdit" name="lineEdit_Response_timeOut">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1746,6 +1746,16 @@ border: 2px solid #7f8c8d;</string>
               </property>
               <item>
                <property name="text">
+                <string>X点</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Y点</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
                 <string>D寄存器</string>
                </property>
               </item>
@@ -1756,12 +1766,22 @@ border: 2px solid #7f8c8d;</string>
               </item>
               <item>
                <property name="text">
-                <string>X寄存器</string>
+                <string>离散输入</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>Y寄存器</string>
+                <string>线圈</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>输入寄存器</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>保持寄存器</string>
                </property>
               </item>
              </widget>
@@ -1813,10 +1833,10 @@ border: 2px solid #7f8c8d;</string>
               </property>
              </widget>
             </item>
-            <item row="1" column="1" colspan="2">
+            <item row="1" column="1" colspan="5">
              <widget class="QLineEdit" name="lineEdit_regValue">
               <property name="placeholderText">
-               <string>要写入的值</string>
+               <string>要写入的值，以(&quot;,&quot; &quot;;&quot; &quot; &quot;)隔开, 例如&quot;1, 2&quot; &quot;1;2&quot; &quot;1 2&quot;</string>
               </property>
              </widget>
             </item>

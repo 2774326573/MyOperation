@@ -1,0 +1,3 @@
+D:/MyCode/MyOperation/build/CMakeFiles/MyOperation.dir
+D:/MyCode/MyOperation/build/CMakeFiles/ALL_BUILD.dir
+D:/MyCode/MyOperation/build/CMakeFiles/ZERO_CHECK.dir

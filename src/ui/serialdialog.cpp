@@ -22,8 +22,11 @@
 #include <QTextCursor>
 #include <QTextEdit>
 #include <QVBoxLayout>
+#include <QTextDocument>
 
 #define SYSTEM "serialModbus"
+
+const int MAX_LOG_LINE_LENGTH = 120; // 设置最大行长度
 
 // 日志重定义
 // 定义优化版的日志宏，基于编译模式和构建设置自动调整行为
@@ -79,7 +82,7 @@ SerialDialog::SerialDialog(QWidget* parent) :
   // 创建模拟数据定时器（仅用于演示）
   simulationTimer = new QTimer(this);
   connect(simulationTimer, &QTimer::timeout, this,
-          &SerialDialog::onSimulateData);
+          &SerialDialog::onReadData);
 
 #ifdef ENABLE_MULTILANGUAGE
   // 注册翻译更新回调
@@ -222,7 +225,7 @@ void SerialDialog::initSerialPortConfig()
   ui->lineEdit_slaveID->setPlaceholderText("1~254"); // 设置从站地址输入框的提示文本
 
   // 7. 超时设置
-  ui->lineEdit_timeOut->setPlaceholderText("单位豪秒/ms "); // 设置超时范围为100ms到5000ms
+  ui->lineEdit_Response_timeOut->setPlaceholderText("单位豪秒/ms "); // 设置超时范围为100ms到5000ms
   // 初始化串口对象
   serialPort = new QSerialPort(this);
 
@@ -246,7 +249,7 @@ void SerialDialog::initModbusManager()
     ui->pushButton_send->setEnabled(true);
     ui->pushButton_readReg->setEnabled(true);
     ui->pushButton_writeReg->setEnabled(true);
-    ui->pushButton_resetCount->setEnabled(true);
+    ui->pushButton_resetCount->setEnabled(false);
     ui->pushButton_clearLog->setEnabled(true);
     ui->comboBox_com->setEnabled(false);
     ui->comboBox_baudrate->setEnabled(false);
@@ -254,7 +257,7 @@ void SerialDialog::initModbusManager()
     ui->comboBox_parity->setEnabled(false);
     ui->comboBox_stopbits->setEnabled(false);
     ui->lineEdit_slaveID->setEnabled(false);
-    ui->lineEdit_timeOut->setEnabled(false);
+    ui->lineEdit_Response_timeOut->setEnabled(false);
 
     // 更新状态标签
     QLabel* statusLabel = findChild<QLabel*>("label_status");
@@ -262,7 +265,9 @@ void SerialDialog::initModbusManager()
     {
       statusLabel->setText(tr("状态: 已连接"));
       statusLabel->setStyleSheet("color: #27ae60; font-weight: bold;");
+      updateAllLEDs(true);
     }
+
   });
   connect(m_modbusManager, &ModbusManager::disconnected, this, [this]()
   {
@@ -281,21 +286,50 @@ void SerialDialog::initModbusManager()
     ui->comboBox_parity->setEnabled(true);
     ui->comboBox_stopbits->setEnabled(true);
     ui->lineEdit_slaveID->setEnabled(true);
-    ui->lineEdit_timeOut->setEnabled(true);
+    ui->lineEdit_Response_timeOut->setEnabled(true);
     // 更新状态标签
     QLabel* statusLabel = findChild<QLabel*>("label_status");
     if (statusLabel)
     {
       statusLabel->setText(tr("状态: 未连接"));
       statusLabel->setStyleSheet("color: #ff0000; font-weight: bold;");
+      updateAllLEDs(false);
     }
   });
-  connect(m_modbusManager, &ModbusManager::dataReceived, this, &SerialDialog::onReadData);
+  // connect(m_modbusManager, &ModbusManager::dataReceived, this, &SerialDialog::onReadData);
   connect(m_modbusManager, &ModbusManager::dataSent, this, &SerialDialog::onSendData);
   connect(m_modbusManager, &ModbusManager::errorOccurred, this, [this](const QString& error)
   {
-    LOG_ERROR("Modbus错误: " + error);
-    QMessageBox::critical(this, tr("错误"), error);
+    if (error.length() > MAX_LOG_LINE_LENGTH)
+    {
+
+      for (int i = 0; i < error.length(); i += MAX_LOG_LINE_LENGTH)
+      {
+        QString segment = error.mid(i, qMin(MAX_LOG_LINE_LENGTH, error.length() - i));
+        appLog(tr("%1").arg(segment), LOGType::INFO);
+      }
+    }
+    else
+    {
+      LOG_ERROR("Modbus错误: " + error);
+      appLog(tr("Modbus错误: %1").arg(error), LOGType::ERR);
+    }
+  });
+  connect(m_modbusManager, &ModbusManager::infoLog, this, [this](const QString& info)
+  {
+    // 检查信息长度，如果过长则分段显示
+    if (info.length() > MAX_LOG_LINE_LENGTH)
+    {
+      for (int i = 0; i < info.length(); i += MAX_LOG_LINE_LENGTH)
+      {
+        QString segment = info.mid(i, qMin(MAX_LOG_LINE_LENGTH, info.length() - i));
+        appLog(tr("%1").arg(segment), LOGType::INFO);
+      }
+    }
+    else
+    {
+      appLog(tr("%1").arg(info), LOGType::INFO);
+    }
   });
 }
 
@@ -325,11 +359,11 @@ void SerialDialog::appLog(const QString& message, LOGType type)
   ui->textEdit_log->setFont(QFont("Consolas", 10)); // 设置字体和大小
   // 设置日志样式
   QString styleSheet = "QTextEdit {"
-                       "background-color: #f0f0f0;"
-                       "color: #333;"
-                       "border: 1px solid #ccc;"
-                       "padding: 5px;"
-                       "}";
+      "background-color: #f0f0f0;"
+      "color: #333;"
+      "border: 1px solid #ccc;"
+      "padding: 5px;"
+      "}";
   ui->textEdit_log->setStyleSheet(styleSheet);
   // 获取当前时间
   QDateTime currentTime = QDateTime::currentDateTime();
@@ -339,18 +373,22 @@ void SerialDialog::appLog(const QString& message, LOGType type)
   QString logMessage = QString("[%1] %2\n").arg(timeString, message);
   switch (type)
   {
-    case LOGType::INFO:
-      logMessage.prepend("<span style='color: blue;'>[INFO] </span>");
-      break;
-    case LOGType::WARNING:
-      logMessage.prepend("<span style='color: orange;'>[WARNING] </span>");
-      break;
-    case LOGType::ERR:
-      logMessage.prepend("<span style='color: red;'>[ERROR] </span>");
-      break;
-    default:
-      logMessage.prepend("<span style='color: black;'>[LOG] </span>");
-      break;
+  case LOGType::INFO:
+    logMessage.prepend("<span style='color: blue;'>[INFO] </span>");
+    LOG_INFO(logMessage);
+    break;
+  case LOGType::WARNING:
+    logMessage.prepend("<span style='color: orange;'>[WARNING] </span>");
+    LOG_WARNING(logMessage);
+    break;
+  case LOGType::ERR:
+    logMessage.prepend("<span style='color: red;'>[ERROR] </span>");
+    LOG_ERROR(logMessage);
+    break;
+  default:
+    logMessage.prepend("<span style='color: black;'>[LOG] </span>");
+    LOG_DEBUG(logMessage);
+    break;
   }
   ui->textEdit_log->append(logMessage);
 
@@ -371,7 +409,7 @@ void SerialDialog::onSaveConfig()
   serialParameters.parity = ui->comboBox_parity->currentData().toInt();
   serialParameters.stopBits = ui->comboBox_stopbits->currentData().toInt();
 
-  modbusParameters.timeout = ui->lineEdit_timeOut->text().toInt();
+  modbusParameters.timeout = ui->lineEdit_Response_timeOut->text().toInt();
   modbusParameters.slaveID = ui->lineEdit_slaveID->text().toInt();
   if (modbusParameters.slaveID < 1 || modbusParameters.slaveID > 254)
   {
@@ -598,7 +636,7 @@ void SerialDialog::loadConfig()
   ui->comboBox_databits->setCurrentText(QString::number(serialParameters.dataBits));
   ui->comboBox_parity->setCurrentText(QString::number(serialParameters.parity));
   ui->comboBox_stopbits->setCurrentText(QString::number(serialParameters.stopBits));
-  ui->lineEdit_timeOut->setText(QString::number(modbusParameters.timeout));
+  ui->lineEdit_Response_timeOut->setText(QString::number(modbusParameters.timeout));
   ui->lineEdit_slaveID->setText(QString::number(modbusParameters.slaveID));
   // 更新LED状态
   updateAllLEDs(false); // 初始状态为灰色（未连接状态）
@@ -622,121 +660,168 @@ void SerialDialog::loadConfig()
  */
 void SerialDialog::onOpenSerialPort()
 {
-  if (serialPort->isOpen())
-  {
-    QMessageBox::warning(this, tr("错误"), tr("串口已经打开"));
-    return;
-  }
-
   if (m_modbusManager->isConnected())
   {
     QMessageBox::warning(this, tr("错误"), tr("Modbus连接已经打开"));
     return;
   }
-
+  serialParameters.portName = ui->comboBox_com->currentText();
+  serialParameters.baudRate = ui->comboBox_baudrate->currentText().toInt();
+  serialParameters.dataBits = ui->comboBox_databits->currentData().toInt();
+  serialParameters.parity = ui->comboBox_parity->currentData().toInt();
+  serialParameters.stopBits = ui->comboBox_stopbits->currentData().toInt();
+  modbusParameters.timeout = ui->lineEdit_Response_timeOut->text().toInt();
+  modbusParameters.slaveID = ui->lineEdit_slaveID->text().toInt();
+  if (modbusParameters.slaveID < 1 || modbusParameters.slaveID > 254)
+  {
+    QMessageBox::warning(this, tr("错误"), tr("从站地址必须在1到254之间"));
+    return;
+  }
+  if (modbusParameters.timeout < 100 || modbusParameters.timeout > 5000)
+  {
+    QMessageBox::warning(this, tr("错误"), tr("超时时间必须在100到5000毫秒之间"));
+    return;
+  }
   m_modbusManager->connectRTU(serialParameters.portName, serialParameters.baudRate,
                               serialParameters.dataBits, serialParameters.parity,
                               serialParameters.stopBits);
-  // 启动模拟定时器（仅用于演示）
-  // simulationTimer->start(2000); // 每2秒更新一次
+  if (m_modbusManager->isConnected())
+  {
+    m_modbusManager->getPortInfo(serialParameters.portName);
+    // simulationTimer->start(50); // 每50毫秒读取一次数据
+  }
 }
 
 void SerialDialog::onCloseSerialPort()
 {
-  if (serialPort->isOpen())
+  if (m_modbusManager->isConnected())
   {
-    serialPort->close();
-
-    // 停止模拟
-    if (simulationTimer->isActive())
-    {
-      simulationTimer->stop();
-    }
-
-    ui->pushButton_open->setEnabled(true);
-    ui->pushButton_close->setEnabled(false);
-
-    // 重新启用参数下拉框
-    ui->comboBox_com->setEnabled(true);
-    ui->comboBox_baudrate->setEnabled(true);
-    ui->comboBox_databits->setEnabled(true);
-    ui->comboBox_parity->setEnabled(true);
-    ui->comboBox_stopbits->setEnabled(true);
-
-    // 更新所有LED为灰色（未连接状态）
-    updateAllLEDs(false);
-
-    // 更新状态标签
-    QLabel* statusLabel = findChild<QLabel*>("label_status");
-    if (statusLabel)
-    {
-      statusLabel->setText(tr("状态: 未连接"));
-      statusLabel->setStyleSheet("color: #e74c3c; font-weight: bold;");
-    }
-
-    QMessageBox::information(this, tr("成功"), tr("串口已关闭"));
+    appLog(tr("正在关闭串口..."), LOGType::INFO);
+    m_modbusManager->disconnect();
+    // simulationTimer->stop(); // 停止模拟数据读取
   }
 }
 
 void SerialDialog::onReadData()
 {
-  // 读取所有可用数据
-  QByteArray data = serialPort->readAll();
-
-  // 在实际应用中，这里应该解析接收到的数据，然后根据解析结果更新LED状态
-  // 例如，可能需要检查数据包格式、校验和等
-
-  // 这里只是简单地演示如何基于接收到的数据更新LED状态
-  if (!data.isEmpty())
+  // 检查Modbus连接状态
+  if (!m_modbusManager || !m_modbusManager->isConnected())
   {
-    // 假设第一个字节表示X00-X07的状态
-    if (data.size() > 0)
-    {
-      uint8_t xStatus = static_cast<uint8_t>(data[0]);
-      for (int i = 0; i < 8; ++i)
-      {
-        bool bitSet = (xStatus & (1 << i)) != 0;
-        updateLEDState(QString("X0%1").arg(i),
-                       bitSet ? LEDState::Green : LEDState::Red);
-      }
-    }
+    appLog(tr("Modbus设备未连接"), LOGType::WARNING);
+    return;
+  }
 
-    // 假设第二个字节表示X10-X17的状态
-    if (data.size() > 1)
+  // 设置从站地址（如果需要）
+  m_modbusManager->setSlaveID(modbusParameters.slaveID);
+  
+  // 先尝试读取线圈状态 - 只读取支持的功能码
+  QVector<bool> coilValues;
+  bool success = m_modbusManager->readCoils(0, 32, coilValues);
+  
+  if (!success)
+  {
+    QString errorMsg = m_modbusManager->getLastError();
+    // 如果读取线圈失败，尝试读取保持寄存器来模拟IO状态
+    QVector<quint16> registerValues;
+    bool regSuccess = m_modbusManager->readHoldingRegisters(0, 4, registerValues);
+    
+    if (regSuccess && registerValues.size() >= 4)
     {
-      uint8_t xStatus = static_cast<uint8_t>(data[1]);
-      for (int i = 0; i < 8; ++i)
+      // 将寄存器值转换为位状态来模拟IO点
+      for (int reg = 0; reg < 4 && reg < registerValues.size(); ++reg)
       {
-        bool bitSet = (xStatus & (1 << i)) != 0;
-        updateLEDState(QString("X1%1").arg(i),
-                       bitSet ? LEDState::Green : LEDState::Red);
+        quint16 regValue = registerValues[reg];
+        for (int bit = 0; bit < 8; ++bit)
+        {
+          bool bitState = (regValue >> bit) & 0x01;
+          
+          if (reg == 0) // X00-X07
+          {
+            updateLEDState(QString("X0%1").arg(bit),
+                          bitState ? LEDState::Green : LEDState::Red);
+          }
+          else if (reg == 1) // X10-X17  
+          {
+            updateLEDState(QString("X1%1").arg(bit),
+                          bitState ? LEDState::Green : LEDState::Red);
+          }
+          else if (reg == 2) // Y00-Y07
+          {
+            updateLEDState(QString("Y0%1").arg(bit),
+                          bitState ? LEDState::Green : LEDState::Red);
+          }
+          else if (reg == 3) // Y10-Y17
+          {
+            updateLEDState(QString("Y1%1").arg(bit),
+                          bitState ? LEDState::Green : LEDState::Red);
+          }
+        }
       }
+      appLog(tr("成功读取IO状态（通过保持寄存器）"), LOGType::INFO);
     }
-
-    // 假设第三个字节表示Y00-Y07的状态
-    if (data.size() > 2)
+    else
     {
-      uint8_t yStatus = static_cast<uint8_t>(data[2]);
-      for (int i = 0; i < 8; ++i)
-      {
-        bool bitSet = (yStatus & (1 << i)) != 0;
-        updateLEDState(QString("Y0%1").arg(i),
-                       bitSet ? LEDState::Green : LEDState::Red);
-      }
+      appLog(tr("读取设备状态失败: %1").arg(errorMsg), LOGType::ERR);
     }
+    return;
+  }
 
-    // 假设第四个字节表示Y10-Y17的状态
-    if (data.size() > 3)
+  // 确保我们有足够的数据
+  if (coilValues.size() < 32)
+  {
+    appLog(tr("读取的线圈数据不足，期望32个，实际%1个").arg(coilValues.size()), LOGType::WARNING);
+    return;
+  }
+
+  // 更新X00-X07的状态
+  for (int i = 0; i < 8; ++i)
+  {
+    if (i < coilValues.size())
     {
-      uint8_t yStatus = static_cast<uint8_t>(data[3]);
-      for (int i = 0; i < 8; ++i)
-      {
-        bool bitSet = (yStatus & (1 << i)) != 0;
-        updateLEDState(QString("Y1%1").arg(i),
-                       bitSet ? LEDState::Green : LEDState::Red);
-      }
+      bool coilState = coilValues[i];
+      updateLEDState(QString("X0%1").arg(i),
+                     coilState ? LEDState::Green : LEDState::Red);
     }
   }
+
+  // 更新X10-X17的状态
+  for (int i = 0; i < 8; ++i)
+  {
+    int coilIndex = 8 + i; // X10-X17 对应线圈索引 8-15
+    if (coilIndex < coilValues.size())
+    {
+      bool coilState = coilValues[coilIndex];
+      updateLEDState(QString("X1%1").arg(i),
+                     coilState ? LEDState::Green : LEDState::Red);
+    }
+  }
+
+  // 更新Y00-Y07的状态
+  for (int i = 0; i < 8; ++i)
+  {
+    int coilIndex = 16 + i; // Y00-Y07 对应线圈索引 16-23
+    if (coilIndex < coilValues.size())
+    {
+      bool coilState = coilValues[coilIndex];
+      updateLEDState(QString("Y0%1").arg(i),
+                     coilState ? LEDState::Green : LEDState::Red);
+    }
+  }
+
+  // 更新Y10-Y17的状态
+  for (int i = 0; i < 8; ++i)
+  {
+    int coilIndex = 24 + i; // Y10-Y17 对应线圈索引 24-31
+    if (coilIndex < coilValues.size())
+    {
+      bool coilState = coilValues[coilIndex];
+      updateLEDState(QString("Y1%1").arg(i),
+                     coilState ? LEDState::Green : LEDState::Red);
+    }
+  }
+
+  // 记录成功读取的信息
+  appLog(tr("成功读取32个线圈状态"), LOGType::INFO);
 }
 
 void SerialDialog::onSimulateData()
@@ -802,9 +887,9 @@ void SerialDialog::onRefreshPorts()
 
 void SerialDialog::onReadRegister()
 {
-  if (!serialPort || !serialPort->isOpen())
+  if (!m_modbusManager->isConnected())
   {
-    QMessageBox::warning(this, tr("错误"), tr("请先打开串口"));
+    appLog(tr("请连接串口"), LOGType::ERR);
     return;
   }
 
@@ -832,26 +917,174 @@ void SerialDialog::onReadRegister()
     return;
   }
 
-  // 构造读取命令（这里是示例，实际协议需要根据具体设备调整）
-  QString command =
-      QString("READ %1 %2 %3\r\n").arg(regType).arg(address).arg(count);
-  QByteArray data = command.toUtf8();
+  // 解析参数
+  bool addressOk = false;
+  bool countOk = false;
+  int startAddress = address.toInt(&addressOk);
+  int registerCount = count.isEmpty() ? 1 : count.toInt(&countOk);
 
-  // 发送命令
-  qint64 bytesWritten = serialPort->write(data);
-  if (bytesWritten == -1)
+  if (!addressOk || startAddress < 0)
   {
-    QMessageBox::critical(this, tr("错误"), tr("发送读取命令失败"));
+    QMessageBox::warning(this, tr("错误"), tr("寄存器地址格式错误"));
     return;
   }
 
-  // 记录到日志
+  if (!count.isEmpty() && (!countOk || registerCount <= 0 || registerCount > 125))
+  {
+    QMessageBox::warning(this, tr("错误"), tr("寄存器数量必须在1-125之间"));
+    return;
+  }
+
+  // 根据寄存器类型执行相应的读取操作
+  QVector<quint16> values;
+  QVector<bool> coilValues;
+  bool success = false;
+  int modbusAddress = startAddress;
+
+  // 解析PLC地址格式并转换为Modbus地址
+  if (regType == "X点" || regType == "X Points" || regType == "输入点")
+  {
+    // X点 -> 离散输入, 八进制转十进制
+    if (address.startsWith("X") || address.startsWith("x"))
+    {
+      QString octalStr = address.mid(1); // 去掉X前缀
+      bool ok;
+      modbusAddress = octalStr.toInt(&ok, 8); // 八进制转换
+      if (!ok) {
+        QMessageBox::warning(this, tr("错误"), tr("X点地址格式错误，应为X00-X77格式"));
+        return;
+      }
+    }
+    success = m_modbusManager->readDiscreteInputs(modbusAddress, registerCount, coilValues);
+  }
+  else if (regType == "Y点" || regType == "Y Points" || regType == "输出点")
+  {
+    // Y点 -> 线圈, 八进制转十进制
+    if (address.startsWith("Y") || address.startsWith("y"))
+    {
+      QString octalStr = address.mid(1); // 去掉Y前缀
+      bool ok;
+      modbusAddress = octalStr.toInt(&ok, 8); // 八进制转换
+      if (!ok) {
+        QMessageBox::warning(this, tr("错误"), tr("Y点地址格式错误，应为Y00-Y77格式"));
+        return;
+      }
+    }
+    success = m_modbusManager->readCoils(modbusAddress, registerCount, coilValues);
+  }
+  else if (regType == "D寄存器" || regType == "D Registers" || regType == "数据寄存器")
+  {
+    // D寄存器 -> 保持寄存器
+    if (address.startsWith("D") || address.startsWith("d"))
+    {
+      QString numStr = address.mid(1); // 去掉D前缀
+      bool ok;
+      modbusAddress = numStr.toInt(&ok);
+      if (!ok || modbusAddress < 0 || modbusAddress > 7999) {
+        QMessageBox::warning(this, tr("错误"), tr("D寄存器地址格式错误，应为D0-D7999格式"));
+        return;
+      }
+    }
+    success = m_modbusManager->readHoldingRegisters(modbusAddress, registerCount, values);
+  }
+  else if (regType == "M寄存器" || regType == "M Registers" || regType == "内部继电器")
+  {
+    // M寄存器 -> 线圈 (地址偏移1000避免与Y点冲突)
+    if (address.startsWith("M") || address.startsWith("m"))
+    {
+      QString numStr = address.mid(1); // 去掉M前缀
+      bool ok;
+      int mAddr = numStr.toInt(&ok);
+      if (!ok || mAddr < 0 || mAddr > 7999) {
+        QMessageBox::warning(this, tr("错误"), tr("M寄存器地址格式错误，应为M0-M7999格式"));
+        return;
+      }
+      modbusAddress = mAddr + 1000; // 地址偏移
+    }
+    success = m_modbusManager->readCoils(modbusAddress, registerCount, coilValues);
+  }
+  else if (regType == "Holding Registers" || regType == "保持寄存器")
+  {
+    success = m_modbusManager->readHoldingRegisters(modbusAddress, registerCount, values);
+  }
+  else if (regType == "Input Registers" || regType == "输入寄存器")
+  {
+    success = m_modbusManager->readInputRegisters(modbusAddress, registerCount, values);
+  }
+  else if (regType == "Coils" || regType == "线圈")
+  {
+    success = m_modbusManager->readCoils(modbusAddress, registerCount, coilValues);
+  }
+  else if (regType == "Discrete Inputs" || regType == "离散输入")
+  {
+    success = m_modbusManager->readDiscreteInputs(modbusAddress, registerCount, coilValues);
+  }
+  else
+  {
+    QMessageBox::warning(this, tr("错误"), tr("不支持的寄存器类型"));
+    return;
+  }
+
+  if (!success)
+  {
+    QString errorMsg = m_modbusManager->getLastError();
+    QMessageBox::critical(this, tr("错误"), tr("读取寄存器失败: %1").arg(errorMsg));
+    appLog(tr("读取寄存器失败: %1").arg(errorMsg), LOGType::ERR);
+    return;
+  }
+
+  // 记录到日志并显示结果
   if (logEdit)
   {
+    QString resultText;
+    QString originalAddress = address;
+    
+    if (regType.contains("X点") || regType.contains("Y点") || regType.contains("M寄存器") ||
+        regType == "Coils" || regType == "线圈" || 
+        regType == "Discrete Inputs" || regType == "离散输入")
+    {
+      // 显示线圈/离散输入的结果
+      QStringList boolResults;
+      for (int i = 0; i < coilValues.size(); ++i)
+      {
+        QString addr;
+        if (regType.contains("X点")) {
+          addr = QString("X%1").arg(startAddress + i, 2, 8, QChar('0')); // 八进制显示
+        } else if (regType.contains("Y点")) {
+          addr = QString("Y%1").arg(startAddress + i, 2, 8, QChar('0')); // 八进制显示
+        } else if (regType.contains("M寄存器")) {
+          addr = QString("M%1").arg(startAddress + i);
+        } else {
+          addr = QString("%1").arg(modbusAddress + i);
+        }
+        boolResults << QString("%1:%2").arg(addr).arg(coilValues[i] ? "1" : "0");
+      }
+      resultText = boolResults.join(", ");
+    }
+    else
+    {
+      // 显示寄存器的结果
+      QStringList regResults;
+      for (int i = 0; i < values.size(); ++i)
+      {
+        QString addr;
+        if (regType.contains("D寄存器")) {
+          addr = QString("D%1").arg(startAddress + i);
+        } else {
+          addr = QString("%1").arg(modbusAddress + i);
+        }
+        regResults << QString("%1:%2").arg(addr).arg(values[i]);
+      }
+      resultText = regResults.join(", ");
+    }
+
     QString logText =
-        QString("[%1] 发送读取命令: %2")
+        QString("[%1] 读取%2成功 - 地址:%3, 数量:%4, 结果:[%5]")
         .arg(QDateTime::currentDateTime().toString("hh:mm:ss"))
-        .arg(command.trimmed());
+        .arg(regType)
+        .arg(originalAddress)
+        .arg(registerCount)
+        .arg(resultText);
     logEdit->append(logText);
 
     if (autoScrollCheck && autoScrollCheck->isChecked())
@@ -859,11 +1092,14 @@ void SerialDialog::onReadRegister()
       logEdit->moveCursor(QTextCursor::End);
     }
   }
+
+  // 记录成功信息到应用日志
+  appLog(tr("成功读取%1, 地址:%2, 数量:%3").arg(regType).arg(address).arg(registerCount), LOGType::INFO);
 }
 
 void SerialDialog::onWriteRegister()
 {
-  if (!serialPort || !serialPort->isOpen())
+  if (!m_modbusManager->isConnected())
   {
     QMessageBox::warning(this, tr("错误"), tr("请先打开串口"));
     return;
@@ -884,41 +1120,179 @@ void SerialDialog::onWriteRegister()
   }
 
   QString regType = regTypeCombo->currentText();
-  QString address = addrEdit->text();
-  QString value = valueEdit->text();
+  QString addressStr = addrEdit->text();
+  QString valueStr = valueEdit->text();
 
-  if (address.isEmpty() || value.isEmpty())
+  if (addressStr.isEmpty() || valueStr.isEmpty())
   {
     QMessageBox::warning(this, tr("错误"), tr("请输入寄存器地址和写入值"));
     return;
   }
 
-  // 构造写入命令（这里是示例，实际协议需要根据具体设备调整）
-  QString command =
-      QString("WRITE %1 %2 %3\r\n").arg(regType).arg(address).arg(value);
-  QByteArray data = command.toUtf8();
-
-  // 发送命令
-  qint64 bytesWritten = serialPort->write(data);
-  if (bytesWritten == -1)
+  // 解析地址
+  bool addressOk;
+  int address = addressStr.toInt(&addressOk);
+  
+  if (!addressOk || address < 0)
   {
-    QMessageBox::critical(this, tr("错误"), tr("发送写入命令失败"));
+    QMessageBox::warning(this, tr("错误"), tr("无效的寄存器地址"));
+    return;
+  }
+
+  bool success = false;
+  QString operationDesc;
+
+  // 解析值字符串，支持多个值 (用逗号、空格或分号分隔)
+  QStringList valueStrList = valueStr.split(QRegExp("[,;\\s]+"), QString::SkipEmptyParts);
+  if (valueStrList.isEmpty())
+  {
+    QMessageBox::warning(this, tr("错误"), tr("请输入有效的写入值"));
+    return;
+  }
+
+  // 根据寄存器类型执行相应的Modbus写入操作
+  if (regType == "线圈" || regType == "Coil" || regType.contains("线圈"))
+  {
+    if (valueStrList.size() == 1)
+    {
+      // 写入单个线圈
+      QString singleValue = valueStrList.first();
+      bool coilValue = false;
+      if (singleValue == "1" || singleValue.toLower() == "true" || singleValue.toLower() == "on")
+      {
+        coilValue = true;
+      }
+      else if (singleValue == "0" || singleValue.toLower() == "false" || singleValue.toLower() == "off")
+      {
+        coilValue = false;
+      }
+      else
+      {
+        QMessageBox::warning(this, tr("错误"), tr("线圈值必须为 0/1 或 true/false"));
+        return;
+      }
+      
+      success = m_modbusManager->writeSingleCoil(address, coilValue);
+      operationDesc = QString("写入单个线圈 地址:%1 值:%2").arg(address).arg(coilValue ? "ON" : "OFF");
+    }
+    else
+    {
+      // 写入多个线圈
+      QVector<bool> coilValues;
+      for (const QString& valStr : valueStrList)
+      {
+        if (valStr == "1" || valStr.toLower() == "true" || valStr.toLower() == "on")
+        {
+          coilValues.append(true);
+        }
+        else if (valStr == "0" || valStr.toLower() == "false" || valStr.toLower() == "off")
+        {
+          coilValues.append(false);
+        }
+        else
+        {
+          QMessageBox::warning(this, tr("错误"), tr("线圈值必须为 0/1 或 true/false: %1").arg(valStr));
+          return;
+        }
+      }
+      
+      success = m_modbusManager->writeMultipleCoils(address, coilValues);
+      QStringList valueDescs;
+      for (int i = 0; i < coilValues.size(); ++i)
+      {
+        valueDescs << QString("%1:%2").arg(address + i).arg(coilValues[i] ? "ON" : "OFF");
+      }
+      operationDesc = QString("写入多个线圈 [%1]").arg(valueDescs.join(", "));
+    }
+  }
+  else if (regType == "保持寄存器" || regType == "Holding Register" || regType.contains("寄存器"))
+  {
+    if (valueStrList.size() == 1)
+    {
+      // 写入单个保持寄存器
+      bool valueOk;
+      quint16 regValue = valueStrList.first().toUShort(&valueOk);
+      if (!valueOk)
+      {
+        QMessageBox::warning(this, tr("错误"), tr("无效的寄存器值 (应为0-65535)"));
+        return;
+      }
+      
+      success = m_modbusManager->writeSingleRegister(address, regValue);
+      operationDesc = QString("写入单个寄存器 地址:%1 值:%2").arg(address).arg(regValue);
+    }
+    else
+    {
+      // 写入多个保持寄存器
+      QVector<quint16> regValues;
+      for (const QString& valStr : valueStrList)
+      {
+        bool valueOk;
+        quint16 regValue = valStr.toUShort(&valueOk);
+        if (!valueOk)
+        {
+          QMessageBox::warning(this, tr("错误"), tr("无效的寄存器值 (应为0-65535): %1").arg(valStr));
+          return;
+        }
+        regValues.append(regValue);
+      }
+      
+      if (regValues.size() > 123) // Modbus限制
+      {
+        QMessageBox::warning(this, tr("错误"), tr("一次最多只能写入123个寄存器"));
+        return;
+      }
+      
+      success = m_modbusManager->writeMultipleRegisters(address, regValues);
+      QStringList valueDescs;
+      for (int i = 0; i < regValues.size(); ++i)
+      {
+        valueDescs << QString("%1:%2").arg(address + i).arg(regValues[i]);
+      }
+      operationDesc = QString("写入多个寄存器 [%1]").arg(valueDescs.join(", "));
+    }
+  }
+  else
+  {
+    QMessageBox::warning(this, tr("错误"), tr("不支持的寄存器类型: %1\n支持类型: 线圈、保持寄存器").arg(regType));
     return;
   }
 
   // 记录到日志
   if (logEdit)
   {
-    QString logText =
-        QString("[%1] 发送写入命令: %2")
-        .arg(QDateTime::currentDateTime().toString("hh:mm:ss"))
-        .arg(command.trimmed());
+    QString logText;
+    if (success)
+    {
+      logText = QString("[%1] 成功: %2")
+                .arg(QDateTime::currentDateTime().toString("hh:mm:ss"))
+                .arg(operationDesc);
+    }
+    else
+    {
+      logText = QString("[%1] 失败: %2 - 错误: %3")
+                .arg(QDateTime::currentDateTime().toString("hh:mm:ss"))
+                .arg(operationDesc)
+                .arg(m_modbusManager->getLastError());
+    }
+    
     logEdit->append(logText);
 
     if (autoScrollCheck && autoScrollCheck->isChecked())
     {
       logEdit->moveCursor(QTextCursor::End);
     }
+  }
+
+  // 显示结果消息
+  if (success)
+  {
+    appLog(tr("Modbus写入成功: %1").arg(operationDesc), LOGType::INFO);
+  }
+  else
+  {
+    QString errorMsg = tr("写入操作失败: %1\n错误信息: %2").arg(operationDesc).arg(m_modbusManager->getLastError());
+    appLog(tr("Modbus写入失败: %1").arg(errorMsg), LOGType::ERR);
   }
 }
 
@@ -933,7 +1307,7 @@ void SerialDialog::onClearLog()
 
 void SerialDialog::onSendData()
 {
-  if (!serialPort || !serialPort->isOpen())
+  if (!m_modbusManager->isConnected())
   {
     QMessageBox::warning(this, tr("错误"), tr("请先打开串口"));
     return;
@@ -956,6 +1330,18 @@ void SerialDialog::onSendData()
   if (text.isEmpty())
   {
     QMessageBox::warning(this, tr("错误"), tr("请输入要发送的数据"));
+    return;
+  }
+
+  // 警告用户这是原始数据发送功能
+  QMessageBox::StandardButton reply = QMessageBox::question(this, 
+    tr("警告"), 
+    tr("这是原始数据发送功能，仅用于调试。\n建议使用上方的Modbus读写功能。\n确定要继续吗？"),
+    QMessageBox::Yes | QMessageBox::No, 
+    QMessageBox::No);
+    
+  if (reply != QMessageBox::Yes)
+  {
     return;
   }
 
@@ -991,23 +1377,64 @@ void SerialDialog::onSendData()
     data = text.toUtf8();
   }
 
-  // 发送数据
-  qint64 bytesWritten = serialPort->write(data);
-  if (bytesWritten == -1)
-  {
-    QMessageBox::critical(this, tr("错误"), tr("发送数据失败"));
-    return;
+  // 解析 Modbus 报文
+  QString analysisResult = analyzeModbusFrame(data);
+  
+  // 检查并修复CRC（如果需要）
+  QByteArray fixedData = data;
+  bool crcFixed = validateAndFixCRC(fixedData);
+  
+  QString crcInfo;
+  if (crcFixed) {
+    crcInfo = tr("\n⚠️ CRC已自动修复为正确值");
+  } else {
+    crcInfo = tr("\n✓ CRC校验正确");
+  }
+  
+  // 提供发送选项
+  QMessageBox msgBox(this);
+  msgBox.setWindowTitle(tr("Modbus报文分析"));
+  msgBox.setText(tr("报文分析结果：\n\n%1%2\n\n是否发送此报文？").arg(analysisResult).arg(crcInfo));
+  msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
+  msgBox.setDefaultButton(QMessageBox::No);
+  msgBox.button(QMessageBox::Yes)->setText(tr("发送"));
+  msgBox.button(QMessageBox::No)->setText(tr("仅分析"));
+  msgBox.button(QMessageBox::Cancel)->setText(tr("取消"));
+  
+  int result = msgBox.exec();
+  
+  if (result == QMessageBox::Yes) {
+    // 发送修复后的报文
+    // 注意：直接串口发送需要访问底层串口，这里我们通过ModbusManager的底层接口
+    appLog(tr("发送原始报文: %1").arg(QString(fixedData.toHex(' ').toUpper())), LOGType::INFO);
+    
+    // TODO: 实现直接串口发送（需要访问ModbusManager的底层串口）
+    // 目前只记录到日志
+    QMessageBox::information(this, tr("提示"), 
+      tr("原始报文发送功能需要进一步实现底层串口访问。\n已修复的报文：%1")
+      .arg(QString(fixedData.toHex(' ').toUpper())));
   }
 
   // 记录到日志
   if (logEdit)
   {
-    QString logText =
-        QString("[%1] 发送: %2")
-        .arg(QDateTime::currentDateTime().toString("hh:mm:ss"))
-        .arg((hexSendCheck && hexSendCheck->isChecked())
-            ? data.toHex(' ').toUpper()
-            : text);
+    QString logText;
+    if (result == QMessageBox::Yes) {
+      logText = QString("[%1] 报文分析并发送: %2\n分析结果: %3")
+                .arg(QDateTime::currentDateTime().toString("hh:mm:ss"))
+                .arg((hexSendCheck && hexSendCheck->isChecked())
+                    ? fixedData.toHex(' ').toUpper()
+                    : text)
+                .arg(analysisResult);
+    } else {
+      logText = QString("[%1] 报文分析 (未发送): %2\n分析结果: %3")
+                .arg(QDateTime::currentDateTime().toString("hh:mm:ss"))
+                .arg((hexSendCheck && hexSendCheck->isChecked())
+                    ? data.toHex(' ').toUpper()
+                    : text)
+                .arg(analysisResult);
+    }
+    
     logEdit->append(logText);
 
     if (autoScrollCheck && autoScrollCheck->isChecked())
@@ -1034,4 +1461,224 @@ void SerialDialog::onResetCount()
   {
     txLabel->setText(tr("发送: 0 字节"));
   }
+}
+
+/**
+ * @brief 分析 Modbus RTU 报文
+ * @param data 原始报文数据
+ * @return 分析结果字符串
+ */
+QString SerialDialog::analyzeModbusFrame(const QByteArray& data)
+{
+  if (data.size() < 4) {
+    return tr("报文长度不足 (最少需要4字节: 从站地址+功能码+数据+CRC)");
+  }
+
+  quint8 slaveAddr = static_cast<quint8>(data[0]);
+  quint8 functionCode = static_cast<quint8>(data[1]);
+  
+  QString result = tr("从站地址: %1 (0x%2)\n")
+                   .arg(slaveAddr)
+                   .arg(slaveAddr, 2, 16, QChar('0')).toUpper();
+
+  // 分析功能码
+  QString functionDesc;
+  switch (functionCode) {
+    case 0x01:
+      functionDesc = tr("读取线圈状态 (Read Coils)");
+      if (data.size() >= 6) {
+        quint16 startAddr = (static_cast<quint8>(data[2]) << 8) | static_cast<quint8>(data[3]);
+        quint16 quantity = (static_cast<quint8>(data[4]) << 8) | static_cast<quint8>(data[5]);
+        functionDesc += tr("\n  起始地址: %1, 数量: %2").arg(startAddr).arg(quantity);
+      }
+      break;
+      
+    case 0x02:
+      functionDesc = tr("读取离散输入 (Read Discrete Inputs)");
+      if (data.size() >= 6) {
+        quint16 startAddr = (static_cast<quint8>(data[2]) << 8) | static_cast<quint8>(data[3]);
+        quint16 quantity = (static_cast<quint8>(data[4]) << 8) | static_cast<quint8>(data[5]);
+        functionDesc += tr("\n  起始地址: %1, 数量: %2").arg(startAddr).arg(quantity);
+      }
+      break;
+      
+    case 0x03:
+      functionDesc = tr("读取保持寄存器 (Read Holding Registers)");
+      if (data.size() >= 6) {
+        quint16 startAddr = (static_cast<quint8>(data[2]) << 8) | static_cast<quint8>(data[3]);
+        quint16 quantity = (static_cast<quint8>(data[4]) << 8) | static_cast<quint8>(data[5]);
+        functionDesc += tr("\n  起始地址: %1, 数量: %2").arg(startAddr).arg(quantity);
+      }
+      break;
+      
+    case 0x04:
+      functionDesc = tr("读取输入寄存器 (Read Input Registers)");
+      if (data.size() >= 6) {
+        quint16 startAddr = (static_cast<quint8>(data[2]) << 8) | static_cast<quint8>(data[3]);
+        quint16 quantity = (static_cast<quint8>(data[4]) << 8) | static_cast<quint8>(data[5]);
+        functionDesc += tr("\n  起始地址: %1, 数量: %2").arg(startAddr).arg(quantity);
+      }
+      break;
+      
+    case 0x05:
+      functionDesc = tr("写入单个线圈 (Write Single Coil)");
+      if (data.size() >= 6) {
+        quint16 addr = (static_cast<quint8>(data[2]) << 8) | static_cast<quint8>(data[3]);
+        quint16 value = (static_cast<quint8>(data[4]) << 8) | static_cast<quint8>(data[5]);
+        functionDesc += tr("\n  地址: %1, 值: %2 (%3)")
+                        .arg(addr)
+                        .arg(value, 4, 16, QChar('0')).toUpper()
+                        .arg(value == 0xFF00 ? "ON" : "OFF");
+      }
+      break;
+      
+    case 0x06:
+      functionDesc = tr("写入单个寄存器 (Write Single Register)");
+      if (data.size() >= 6) {
+        quint16 addr = (static_cast<quint8>(data[2]) << 8) | static_cast<quint8>(data[3]);
+        quint16 value = (static_cast<quint8>(data[4]) << 8) | static_cast<quint8>(data[5]);
+        functionDesc += tr("\n  地址: %1, 值: %2").arg(addr).arg(value);
+      }
+      break;
+      
+    case 0x0F:
+      functionDesc = tr("写入多个线圈 (Write Multiple Coils)");
+      if (data.size() >= 7) {
+        quint16 startAddr = (static_cast<quint8>(data[2]) << 8) | static_cast<quint8>(data[3]);
+        quint16 quantity = (static_cast<quint8>(data[4]) << 8) | static_cast<quint8>(data[5]);
+        quint8 byteCount = static_cast<quint8>(data[6]);
+        functionDesc += tr("\n  起始地址: %1, 数量: %2, 数据字节数: %3")
+                        .arg(startAddr).arg(quantity).arg(byteCount);
+      }
+      break;
+      
+    case 0x10:
+      functionDesc = tr("写入多个寄存器 (Write Multiple Registers)");
+      if (data.size() >= 7) {
+        quint16 startAddr = (static_cast<quint8>(data[2]) << 8) | static_cast<quint8>(data[3]);
+        quint16 quantity = (static_cast<quint8>(data[4]) << 8) | static_cast<quint8>(data[5]);
+        quint8 byteCount = static_cast<quint8>(data[6]);
+        functionDesc += tr("\n  起始地址: %1, 数量: %2, 数据字节数: %3")
+                        .arg(startAddr).arg(quantity).arg(byteCount);
+      }
+      break;
+      
+    case 0x17:
+      functionDesc = tr("读写多个寄存器 (Read/Write Multiple Registers)");
+      break;
+      
+    case 0x16:
+      functionDesc = tr("掩码写入寄存器 (Mask Write Register)");
+      if (data.size() >= 8) {
+        quint16 addr = (static_cast<quint8>(data[2]) << 8) | static_cast<quint8>(data[3]);
+        quint16 andMask = (static_cast<quint8>(data[4]) << 8) | static_cast<quint8>(data[5]);
+        quint16 orMask = (static_cast<quint8>(data[6]) << 8) | static_cast<quint8>(data[7]);
+        functionDesc += tr("\n  地址: %1, AND掩码: 0x%2, OR掩码: 0x%3")
+                        .arg(addr)
+                        .arg(andMask, 4, 16, QChar('0')).toUpper()
+                        .arg(orMask, 4, 16, QChar('0')).toUpper();
+      }
+      break;
+      
+    default:
+      if (functionCode >= 0x80) {
+        quint8 exceptionCode = functionCode & 0x7F;
+        functionDesc = tr("异常响应 (Exception Response)");
+        functionDesc += tr("\n  原功能码: 0x%1").arg(exceptionCode, 2, 16, QChar('0')).toUpper();
+        if (data.size() >= 3) {
+          quint8 exceptionType = static_cast<quint8>(data[2]);
+          QString exceptionDesc;
+          switch (exceptionType) {
+            case 0x01: exceptionDesc = tr("非法功能码"); break;
+            case 0x02: exceptionDesc = tr("非法数据地址"); break;
+            case 0x03: exceptionDesc = tr("非法数据值"); break;
+            case 0x04: exceptionDesc = tr("从站设备故障"); break;
+            case 0x05: exceptionDesc = tr("确认"); break;
+            case 0x06: exceptionDesc = tr("从站设备忙"); break;
+            default: exceptionDesc = tr("未知异常"); break;
+          }
+          functionDesc += tr("\n  异常代码: 0x%1 (%2)")
+                          .arg(exceptionType, 2, 16, QChar('0')).toUpper()
+                          .arg(exceptionDesc);
+        }
+      } else {
+        functionDesc = tr("未知功能码: 0x%1").arg(functionCode, 2, 16, QChar('0')).toUpper();
+      }
+      break;
+  }
+
+  result += tr("功能码: 0x%1 - %2\n")
+            .arg(functionCode, 2, 16, QChar('0')).toUpper()
+            .arg(functionDesc);
+
+  // CRC 校验分析
+  if (data.size() >= 2) {
+    quint16 receivedCRC = (static_cast<quint8>(data[data.size()-1]) << 8) | 
+                          static_cast<quint8>(data[data.size()-2]);
+    
+    // 计算正确的CRC
+    quint16 calculatedCRC = calculateCRC16(reinterpret_cast<const quint8*>(data.constData()), data.size() - 2);
+    
+    result += tr("CRC校验: 接收=0x%1, 计算=0x%2")
+              .arg(receivedCRC, 4, 16, QChar('0')).toUpper()
+              .arg(calculatedCRC, 4, 16, QChar('0')).toUpper();
+    
+    if (receivedCRC == calculatedCRC) {
+      result += tr(" ✓ 校验正确");
+    } else {
+      result += tr(" ✗ 校验错误");
+    }
+  }
+
+  result += tr("\n原始数据: %1").arg(QString(data.toHex(' ')).toUpper());
+  result += tr("\n数据长度: %1 字节").arg(data.size());
+
+  return result;
+}
+
+quint16 SerialDialog::calculateCRC16(const quint8* data, int length)
+{
+  quint16 crc = 0xFFFF;
+  
+  for (int i = 0; i < length; i++) {
+    crc ^= data[i];
+    for (int j = 0; j < 8; j++) {
+      if (crc & 0x0001) {
+        crc >>= 1;
+        crc ^= 0xA001;
+      } else {
+        crc >>= 1;
+      }
+    }
+  }
+  
+  return crc;
+}
+
+/**
+ * @brief 验证并修复 Modbus 报文的 CRC 校验
+ * @param data 报文数据（会被修改）
+ * @return 是否需要修复CRC
+ */
+bool SerialDialog::validateAndFixCRC(QByteArray& data)
+{
+  if (data.size() < 4) {
+    return false; // 报文太短
+  }
+  
+  // 计算正确的CRC
+  quint16 calculatedCRC = calculateCRC16(reinterpret_cast<const quint8*>(data.constData()), data.size() - 2);
+  
+  // 获取报文中的CRC (低字节在前)
+  quint16 receivedCRC = (static_cast<quint8>(data[data.size()-1]) << 8) | 
+                        static_cast<quint8>(data[data.size()-2]);
+  
+  if (calculatedCRC != receivedCRC) {
+    // CRC不匹配，修复它
+    data[data.size()-2] = static_cast<char>(calculatedCRC & 0xFF);        // 低字节
+    data[data.size()-1] = static_cast<char>((calculatedCRC >> 8) & 0xFF); // 高字节
+    return true; // 需要修复
+  }
+  
+  return false; // CRC正确
 }

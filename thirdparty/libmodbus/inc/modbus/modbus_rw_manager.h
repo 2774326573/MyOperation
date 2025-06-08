@@ -140,6 +140,33 @@ public:
      */
     static int getIndexFromFunctionCode(FunctionCode functionCode);
 
+    // ========== 串口诊断功能 (Serial Diagnostic Functions) ==========
+    /**
+     * @brief 获取可用串口列表
+     * @return 串口名称列表
+     */
+    static QStringList getAvailablePorts();
+
+    /**
+     * @brief 获取串口诊断报告
+     * @param portName 串口名称
+     * @return 诊断报告
+     */
+    static QString getSerialDiagnosticReport(const QString &portName = QString());
+
+    /**
+     * @brief 获取串口建议
+     * @param portName 串口名称
+     * @return 建议列表
+     */
+    static QStringList getSerialRecommendations(const QString &portName);
+
+    /**
+     * @brief 获取快速解决方案
+     * @return 解决方案列表
+     */
+    static QStringList getQuickFixes();
+
 signals:
     /**
      * @brief 操作完成信号
@@ -188,4 +215,4 @@ private:
     ModbusManager* m_modbusManager;  // Modbus管理器
 };
 
-#endif // MODBUS_RW_MANAGER_H 
+#endif // MODBUS_RW_MANAGER_H

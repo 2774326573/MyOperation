@@ -1,0 +1,1147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FCC9824E-D754-372A-B0EB-A89EC21F4380}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>MyOperation</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\MyCode\MyOperation\build\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MyOperation.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MyOperation</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\MyCode\MyOperation\build\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MyOperation.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MyOperation</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\MyCode\MyOperation\build\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">MyOperation.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">MyOperation</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\MyCode\MyOperation\build\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">MyOperation.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">MyOperation</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\MyCode\MyOperation\build\MyOperation_autogen\include_Debug;D:\MyCode\MyOperation\inc;D:\MyCode\MyOperation\thirdparty\hdevelop\include;D:\MyCode\MyOperation\thirdparty\libmodbus\inc;D:\MyCode\MyOperation\thirdparty\config\inc;D:\MyCode\MyOperation\thirdparty\log_manager\inc;D:\MyCode\MyOperation\thirdparty\dynamic_ui\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCore;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\.\mkspecs\win32-msvc;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtGui;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtANGLE;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtWidgets;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtNetwork;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialPort;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialBus;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCharts;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSvg;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSql;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtPrintSupport;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtConcurrent;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4828</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;QT_USE_QSTRINGBUILDER;UNICODE;_UNICODE;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_NETWORK_LIB;QT_SERIALPORT_LIB;QT_SERIALBUS_LIB;QT_CHARTS_LIB;QT_SVG_LIB;QT_SQL_LIB;QT_PRINTSUPPORT_LIB;QT_CONCURRENT_LIB;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;QT_USE_QSTRINGBUILDER;UNICODE;_UNICODE;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;QT_NETWORK_LIB;QT_SERIALPORT_LIB;QT_SERIALBUS_LIB;QT_CHARTS_LIB;QT_SVG_LIB;QT_SQL_LIB;QT_PRINTSUPPORT_LIB;QT_CONCURRENT_LIB;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\MyCode\MyOperation\build\MyOperation_autogen\include_Debug;D:\MyCode\MyOperation\inc;D:\MyCode\MyOperation\thirdparty\hdevelop\include;D:\MyCode\MyOperation\thirdparty\libmodbus\inc;D:\MyCode\MyOperation\thirdparty\config\inc;D:\MyCode\MyOperation\thirdparty\log_manager\inc;D:\MyCode\MyOperation\thirdparty\dynamic_ui\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCore;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\.\mkspecs\win32-msvc;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtGui;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtANGLE;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtWidgets;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtNetwork;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialPort;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialBus;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCharts;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSvg;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSql;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtPrintSupport;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtConcurrent;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\MyCode\MyOperation\build\MyOperation_autogen\include_Debug;D:\MyCode\MyOperation\inc;D:\MyCode\MyOperation\thirdparty\hdevelop\include;D:\MyCode\MyOperation\thirdparty\libmodbus\inc;D:\MyCode\MyOperation\thirdparty\config\inc;D:\MyCode\MyOperation\thirdparty\log_manager\inc;D:\MyCode\MyOperation\thirdparty\dynamic_ui\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCore;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\.\mkspecs\win32-msvc;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtGui;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtANGLE;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtWidgets;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtNetwork;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialPort;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialBus;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCharts;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSvg;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSql;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtPrintSupport;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtConcurrent;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message>Automatic MOC and UIC for target MyOperation</Message>
+      <Command>setlocal
+cd D:\MyCode\MyOperation\build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen D:/MyCode/MyOperation/build/CMakeFiles/MyOperation_autogen.dir/AutogenInfo.json Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch D:/MyCode/MyOperation/build/MyOperation_autogen/autouic_Debug.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>								</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/MyCode/MyOperation/thirdparty/libmodbus/libmodbus64/lib/modbus.dll D:/MyCode/MyOperation/build/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/MyCode/MyOperation/thirdparty/libmodbus/libmodbus64/lib/modbusd.dll D:/MyCode/MyOperation/build/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/MyCode/MyOperation/build/Debug/plugins/platforms/
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/plugins/platforms/qwindows.dll D:/MyCode/MyOperation/build/Debug/plugins/platforms/
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5Core.dll D:/MyCode/MyOperation/build/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5Gui.dll D:/MyCode/MyOperation/build/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5Widgets.dll D:/MyCode/MyOperation/build/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5Network.dll D:/MyCode/MyOperation/build/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5SerialPort.dll D:/MyCode/MyOperation/build/Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5SerialPortd.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5SerialBusd.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Chartsd.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Networkd.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Svgd.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Sqld.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5PrintSupportd.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Concurrentd.lib;D:\MyCode\MyOperation\thirdparty\hdevelop\lib\halconcpp.lib;D:\MyCode\MyOperation\thirdparty\hdevelop\lib\halcon.lib;D:\MyCode\MyOperation\thirdparty\hdevelop\lib\hdevenginecpp.lib;D:\MyCode\MyOperation\thirdparty\libmodbus\libmodbus64\lib\modbusd.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Widgetsd.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Guid.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Cored.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/MyCode/MyOperation/build/Debug/MyOperation.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/MyCode/MyOperation/build/Debug/MyOperation.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\MyCode\MyOperation\build\MyOperation_autogen\include_Release;D:\MyCode\MyOperation\inc;D:\MyCode\MyOperation\thirdparty\hdevelop\include;D:\MyCode\MyOperation\thirdparty\libmodbus\inc;D:\MyCode\MyOperation\thirdparty\config\inc;D:\MyCode\MyOperation\thirdparty\log_manager\inc;D:\MyCode\MyOperation\thirdparty\dynamic_ui\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCore;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\.\mkspecs\win32-msvc;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtGui;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtANGLE;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtWidgets;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtNetwork;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialPort;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialBus;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCharts;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSvg;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSql;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtPrintSupport;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtConcurrent;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DisableSpecificWarnings>4828</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;QT_USE_QSTRINGBUILDER;NDEBUG;UNICODE;_UNICODE;QT_CORE_LIB;QT_NO_DEBUG;QT_GUI_LIB;QT_WIDGETS_LIB;QT_NETWORK_LIB;QT_SERIALPORT_LIB;QT_SERIALBUS_LIB;QT_CHARTS_LIB;QT_SVG_LIB;QT_SQL_LIB;QT_PRINTSUPPORT_LIB;QT_CONCURRENT_LIB;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;QT_USE_QSTRINGBUILDER;NDEBUG;UNICODE;_UNICODE;QT_CORE_LIB;QT_NO_DEBUG;QT_GUI_LIB;QT_WIDGETS_LIB;QT_NETWORK_LIB;QT_SERIALPORT_LIB;QT_SERIALBUS_LIB;QT_CHARTS_LIB;QT_SVG_LIB;QT_SQL_LIB;QT_PRINTSUPPORT_LIB;QT_CONCURRENT_LIB;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\MyCode\MyOperation\build\MyOperation_autogen\include_Release;D:\MyCode\MyOperation\inc;D:\MyCode\MyOperation\thirdparty\hdevelop\include;D:\MyCode\MyOperation\thirdparty\libmodbus\inc;D:\MyCode\MyOperation\thirdparty\config\inc;D:\MyCode\MyOperation\thirdparty\log_manager\inc;D:\MyCode\MyOperation\thirdparty\dynamic_ui\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCore;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\.\mkspecs\win32-msvc;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtGui;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtANGLE;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtWidgets;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtNetwork;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialPort;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialBus;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCharts;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSvg;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSql;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtPrintSupport;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtConcurrent;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\MyCode\MyOperation\build\MyOperation_autogen\include_Release;D:\MyCode\MyOperation\inc;D:\MyCode\MyOperation\thirdparty\hdevelop\include;D:\MyCode\MyOperation\thirdparty\libmodbus\inc;D:\MyCode\MyOperation\thirdparty\config\inc;D:\MyCode\MyOperation\thirdparty\log_manager\inc;D:\MyCode\MyOperation\thirdparty\dynamic_ui\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCore;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\.\mkspecs\win32-msvc;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtGui;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtANGLE;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtWidgets;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtNetwork;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialPort;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialBus;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCharts;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSvg;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSql;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtPrintSupport;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtConcurrent;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message>Automatic MOC and UIC for target MyOperation</Message>
+      <Command>setlocal
+cd D:\MyCode\MyOperation\build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen D:/MyCode/MyOperation/build/CMakeFiles/MyOperation_autogen.dir/AutogenInfo.json Release
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch D:/MyCode/MyOperation/build/MyOperation_autogen/autouic_Release.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>								</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/MyCode/MyOperation/thirdparty/libmodbus/libmodbus64/lib/modbus.dll D:/MyCode/MyOperation/build/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/MyCode/MyOperation/thirdparty/libmodbus/libmodbus64/lib/modbusd.dll D:/MyCode/MyOperation/build/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/MyCode/MyOperation/build/Release/plugins/platforms/
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/plugins/platforms/qwindows.dll D:/MyCode/MyOperation/build/Release/plugins/platforms/
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5Core.dll D:/MyCode/MyOperation/build/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5Gui.dll D:/MyCode/MyOperation/build/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5Widgets.dll D:/MyCode/MyOperation/build/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5Network.dll D:/MyCode/MyOperation/build/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5SerialPort.dll D:/MyCode/MyOperation/build/Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5SerialPort.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5SerialBus.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Charts.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Network.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Svg.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Sql.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5PrintSupport.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Concurrent.lib;D:\MyCode\MyOperation\thirdparty\hdevelop\lib\halconcpp.lib;D:\MyCode\MyOperation\thirdparty\hdevelop\lib\halcon.lib;D:\MyCode\MyOperation\thirdparty\hdevelop\lib\hdevenginecpp.lib;D:\MyCode\MyOperation\thirdparty\libmodbus\libmodbus64\lib\modbusd.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Widgets.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Gui.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Core.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/MyCode/MyOperation/build/Release/MyOperation.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/MyCode/MyOperation/build/Release/MyOperation.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\MyCode\MyOperation\build\MyOperation_autogen\include_MinSizeRel;D:\MyCode\MyOperation\inc;D:\MyCode\MyOperation\thirdparty\hdevelop\include;D:\MyCode\MyOperation\thirdparty\libmodbus\inc;D:\MyCode\MyOperation\thirdparty\config\inc;D:\MyCode\MyOperation\thirdparty\log_manager\inc;D:\MyCode\MyOperation\thirdparty\dynamic_ui\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCore;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\.\mkspecs\win32-msvc;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtGui;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtANGLE;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtWidgets;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtNetwork;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialPort;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialBus;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCharts;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSvg;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSql;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtPrintSupport;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtConcurrent;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DisableSpecificWarnings>4828</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;QT_USE_QSTRINGBUILDER;NDEBUG;UNICODE;_UNICODE;QT_CORE_LIB;QT_NO_DEBUG;QT_GUI_LIB;QT_WIDGETS_LIB;QT_NETWORK_LIB;QT_SERIALPORT_LIB;QT_SERIALBUS_LIB;QT_CHARTS_LIB;QT_SVG_LIB;QT_SQL_LIB;QT_PRINTSUPPORT_LIB;QT_CONCURRENT_LIB;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;QT_USE_QSTRINGBUILDER;NDEBUG;UNICODE;_UNICODE;QT_CORE_LIB;QT_NO_DEBUG;QT_GUI_LIB;QT_WIDGETS_LIB;QT_NETWORK_LIB;QT_SERIALPORT_LIB;QT_SERIALBUS_LIB;QT_CHARTS_LIB;QT_SVG_LIB;QT_SQL_LIB;QT_PRINTSUPPORT_LIB;QT_CONCURRENT_LIB;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\MyCode\MyOperation\build\MyOperation_autogen\include_MinSizeRel;D:\MyCode\MyOperation\inc;D:\MyCode\MyOperation\thirdparty\hdevelop\include;D:\MyCode\MyOperation\thirdparty\libmodbus\inc;D:\MyCode\MyOperation\thirdparty\config\inc;D:\MyCode\MyOperation\thirdparty\log_manager\inc;D:\MyCode\MyOperation\thirdparty\dynamic_ui\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCore;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\.\mkspecs\win32-msvc;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtGui;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtANGLE;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtWidgets;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtNetwork;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialPort;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialBus;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCharts;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSvg;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSql;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtPrintSupport;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtConcurrent;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\MyCode\MyOperation\build\MyOperation_autogen\include_MinSizeRel;D:\MyCode\MyOperation\inc;D:\MyCode\MyOperation\thirdparty\hdevelop\include;D:\MyCode\MyOperation\thirdparty\libmodbus\inc;D:\MyCode\MyOperation\thirdparty\config\inc;D:\MyCode\MyOperation\thirdparty\log_manager\inc;D:\MyCode\MyOperation\thirdparty\dynamic_ui\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCore;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\.\mkspecs\win32-msvc;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtGui;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtANGLE;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtWidgets;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtNetwork;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialPort;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialBus;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCharts;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSvg;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSql;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtPrintSupport;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtConcurrent;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message>Automatic MOC and UIC for target MyOperation</Message>
+      <Command>setlocal
+cd D:\MyCode\MyOperation\build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen D:/MyCode/MyOperation/build/CMakeFiles/MyOperation_autogen.dir/AutogenInfo.json MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch D:/MyCode/MyOperation/build/MyOperation_autogen/autouic_MinSizeRel.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>								</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/MyCode/MyOperation/thirdparty/libmodbus/libmodbus64/lib/modbus.dll D:/MyCode/MyOperation/build/MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/MyCode/MyOperation/thirdparty/libmodbus/libmodbus64/lib/modbusd.dll D:/MyCode/MyOperation/build/MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/MyCode/MyOperation/build/MinSizeRel/plugins/platforms/
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/plugins/platforms/qwindows.dll D:/MyCode/MyOperation/build/MinSizeRel/plugins/platforms/
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5Core.dll D:/MyCode/MyOperation/build/MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5Gui.dll D:/MyCode/MyOperation/build/MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5Widgets.dll D:/MyCode/MyOperation/build/MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5Network.dll D:/MyCode/MyOperation/build/MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5SerialPort.dll D:/MyCode/MyOperation/build/MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5SerialPort.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5SerialBus.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Charts.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Network.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Svg.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Sql.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5PrintSupport.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Concurrent.lib;D:\MyCode\MyOperation\thirdparty\hdevelop\lib\halconcpp.lib;D:\MyCode\MyOperation\thirdparty\hdevelop\lib\halcon.lib;D:\MyCode\MyOperation\thirdparty\hdevelop\lib\hdevenginecpp.lib;D:\MyCode\MyOperation\thirdparty\libmodbus\libmodbus64\lib\modbusd.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Widgets.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Gui.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Core.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/MyCode/MyOperation/build/MinSizeRel/MyOperation.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/MyCode/MyOperation/build/MinSizeRel/MyOperation.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\MyCode\MyOperation\build\MyOperation_autogen\include_RelWithDebInfo;D:\MyCode\MyOperation\inc;D:\MyCode\MyOperation\thirdparty\hdevelop\include;D:\MyCode\MyOperation\thirdparty\libmodbus\inc;D:\MyCode\MyOperation\thirdparty\config\inc;D:\MyCode\MyOperation\thirdparty\log_manager\inc;D:\MyCode\MyOperation\thirdparty\dynamic_ui\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCore;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\.\mkspecs\win32-msvc;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtGui;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtANGLE;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtWidgets;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtNetwork;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialPort;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialBus;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCharts;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSvg;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSql;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtPrintSupport;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtConcurrent;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4828</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;QT_USE_QSTRINGBUILDER;NDEBUG;UNICODE;_UNICODE;QT_CORE_LIB;QT_NO_DEBUG;QT_GUI_LIB;QT_WIDGETS_LIB;QT_NETWORK_LIB;QT_SERIALPORT_LIB;QT_SERIALBUS_LIB;QT_CHARTS_LIB;QT_SVG_LIB;QT_SQL_LIB;QT_PRINTSUPPORT_LIB;QT_CONCURRENT_LIB;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;QT_USE_QSTRINGBUILDER;NDEBUG;UNICODE;_UNICODE;QT_CORE_LIB;QT_NO_DEBUG;QT_GUI_LIB;QT_WIDGETS_LIB;QT_NETWORK_LIB;QT_SERIALPORT_LIB;QT_SERIALBUS_LIB;QT_CHARTS_LIB;QT_SVG_LIB;QT_SQL_LIB;QT_PRINTSUPPORT_LIB;QT_CONCURRENT_LIB;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\MyCode\MyOperation\build\MyOperation_autogen\include_RelWithDebInfo;D:\MyCode\MyOperation\inc;D:\MyCode\MyOperation\thirdparty\hdevelop\include;D:\MyCode\MyOperation\thirdparty\libmodbus\inc;D:\MyCode\MyOperation\thirdparty\config\inc;D:\MyCode\MyOperation\thirdparty\log_manager\inc;D:\MyCode\MyOperation\thirdparty\dynamic_ui\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCore;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\.\mkspecs\win32-msvc;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtGui;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtANGLE;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtWidgets;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtNetwork;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialPort;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialBus;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCharts;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSvg;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSql;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtPrintSupport;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtConcurrent;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\MyCode\MyOperation\build\MyOperation_autogen\include_RelWithDebInfo;D:\MyCode\MyOperation\inc;D:\MyCode\MyOperation\thirdparty\hdevelop\include;D:\MyCode\MyOperation\thirdparty\libmodbus\inc;D:\MyCode\MyOperation\thirdparty\config\inc;D:\MyCode\MyOperation\thirdparty\log_manager\inc;D:\MyCode\MyOperation\thirdparty\dynamic_ui\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCore;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\.\mkspecs\win32-msvc;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtGui;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtANGLE;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtWidgets;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtNetwork;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialPort;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSerialBus;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtCharts;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSvg;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtSql;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtPrintSupport;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\include\QtConcurrent;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message>Automatic MOC and UIC for target MyOperation</Message>
+      <Command>setlocal
+cd D:\MyCode\MyOperation\build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen D:/MyCode/MyOperation/build/CMakeFiles/MyOperation_autogen.dir/AutogenInfo.json RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch D:/MyCode/MyOperation/build/MyOperation_autogen/autouic_RelWithDebInfo.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>								</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/MyCode/MyOperation/thirdparty/libmodbus/libmodbus64/lib/modbus.dll D:/MyCode/MyOperation/build/RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/MyCode/MyOperation/thirdparty/libmodbus/libmodbus64/lib/modbusd.dll D:/MyCode/MyOperation/build/RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/MyCode/MyOperation/build/RelWithDebInfo/plugins/platforms/
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/plugins/platforms/qwindows.dll D:/MyCode/MyOperation/build/RelWithDebInfo/plugins/platforms/
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5Core.dll D:/MyCode/MyOperation/build/RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5Gui.dll D:/MyCode/MyOperation/build/RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5Widgets.dll D:/MyCode/MyOperation/build/RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5Network.dll D:/MyCode/MyOperation/build/RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/install/Qt/Qt5.12/5.12.12/msvc2017_64/bin/Qt5SerialPort.dll D:/MyCode/MyOperation/build/RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5SerialPort.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5SerialBus.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Charts.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Network.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Svg.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Sql.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5PrintSupport.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Concurrent.lib;D:\MyCode\MyOperation\thirdparty\hdevelop\lib\halconcpp.lib;D:\MyCode\MyOperation\thirdparty\hdevelop\lib\halcon.lib;D:\MyCode\MyOperation\thirdparty\hdevelop\lib\hdevenginecpp.lib;D:\MyCode\MyOperation\thirdparty\libmodbus\libmodbus64\lib\modbusd.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Widgets.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Gui.lib;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\Qt5Core.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/MyCode/MyOperation/build/RelWithDebInfo/MyOperation.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/MyCode/MyOperation/build/RelWithDebInfo/MyOperation.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\MyCode\MyOperation\build\CMakeFiles\ea446a23cbc969aa240a494e9e364055\autouic_(CONFIG).stamp.rule">
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd D:\MyCode\MyOperation\build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\MyCode\MyOperation\ui\ui\SerialDialog.ui;D:\MyCode\MyOperation\ui\ui\VisualProcess.ui;D:\MyCode\MyOperation\ui\ui\mainwindow.ui;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\MyCode\MyOperation\build\MyOperation_autogen\autouic_Debug.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+cd D:\MyCode\MyOperation\build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\MyCode\MyOperation\ui\ui\SerialDialog.ui;D:\MyCode\MyOperation\ui\ui\VisualProcess.ui;D:\MyCode\MyOperation\ui\ui\mainwindow.ui;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\MyCode\MyOperation\build\MyOperation_autogen\autouic_Release.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\MyCode\MyOperation\build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\MyCode\MyOperation\ui\ui\SerialDialog.ui;D:\MyCode\MyOperation\ui\ui\VisualProcess.ui;D:\MyCode\MyOperation\ui\ui\mainwindow.ui;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\MyCode\MyOperation\build\MyOperation_autogen\autouic_MinSizeRel.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\MyCode\MyOperation\build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\MyCode\MyOperation\ui\ui\SerialDialog.ui;D:\MyCode\MyOperation\ui\ui\VisualProcess.ui;D:\MyCode\MyOperation\ui\ui\mainwindow.ui;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\MyCode\MyOperation\build\MyOperation_autogen\autouic_RelWithDebInfo.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\MyCode\MyOperation\build\CMakeFiles\cefe239f47223bb6ac89fb12040b584c\qrc_resources.cpp.rule">
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Automatic RCC for ui/resources/resources.qrc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd D:\MyCode\MyOperation\build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc D:/MyCode/MyOperation/build/CMakeFiles/MyOperation_autogen.dir/AutoRcc_resources_DU2J4TJIAG_Info.json Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\MyCode\MyOperation\ui\resources\resources.qrc;D:\MyCode\MyOperation\build\CMakeFiles\MyOperation_autogen.dir\AutoRcc_resources_DU2J4TJIAG_Info.json;D:\MyCode\MyOperation\ui\resources\icons\serial.png;D:\MyCode\MyOperation\ui\resources\icons\red_io_icon.png;D:\MyCode\MyOperation\ui\resources\icons\product.png;D:\MyCode\MyOperation\ui\resources\icons\motion.png;D:\MyCode\MyOperation\ui\resources\icons\pause.png;D:\MyCode\MyOperation\ui\resources\icons\cameraSetting.png;D:\MyCode\MyOperation\ui\resources\icons\gree_io_icon.png;D:\MyCode\MyOperation\ui\resources\icons\io.png;D:\MyCode\MyOperation\ui\resources\icons\chart-bar.png;D:\MyCode\MyOperation\ui\resources\icons\debugMode.png;D:\MyCode\MyOperation\ui\resources\icons\login.png;D:\MyCode\MyOperation\ui\resources\icons\factoryMode.png;D:\MyCode\MyOperation\ui\resources\icons\start.png;D:\MyCode\MyOperation\ui\resources\icons\onlineMode.png;D:\MyCode\MyOperation\ui\resources\icons\offlineMode.png;D:\MyCode\MyOperation\ui\resources\icons\visual.png;D:\MyCode\MyOperation\ui\resources\icons\arrow-up.png;D:\MyCode\MyOperation\ui\resources\icons\autoMode.png;D:\MyCode\MyOperation\ui\resources\icons\arrow-down.png;D:\MyCode\MyOperation\ui\resources\icons\AI.png;D:\MyCode\MyOperation\ui\resources\icons\mes.png;D:\MyCode\MyOperation\ui\resources\icons\logo.png;D:\MyCode\MyOperation\ui\resources\icons\stop.png;D:\MyCode\MyOperation\ui\resources\icons\gray_io_icon.png;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\bin\rcc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\MyCode\MyOperation\build\MyOperation_autogen\DU2J4TJIAG\qrc_resources.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Automatic RCC for ui/resources/resources.qrc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+cd D:\MyCode\MyOperation\build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc D:/MyCode/MyOperation/build/CMakeFiles/MyOperation_autogen.dir/AutoRcc_resources_DU2J4TJIAG_Info.json Release
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\MyCode\MyOperation\ui\resources\resources.qrc;D:\MyCode\MyOperation\build\CMakeFiles\MyOperation_autogen.dir\AutoRcc_resources_DU2J4TJIAG_Info.json;D:\MyCode\MyOperation\ui\resources\icons\serial.png;D:\MyCode\MyOperation\ui\resources\icons\red_io_icon.png;D:\MyCode\MyOperation\ui\resources\icons\product.png;D:\MyCode\MyOperation\ui\resources\icons\motion.png;D:\MyCode\MyOperation\ui\resources\icons\pause.png;D:\MyCode\MyOperation\ui\resources\icons\cameraSetting.png;D:\MyCode\MyOperation\ui\resources\icons\gree_io_icon.png;D:\MyCode\MyOperation\ui\resources\icons\io.png;D:\MyCode\MyOperation\ui\resources\icons\chart-bar.png;D:\MyCode\MyOperation\ui\resources\icons\debugMode.png;D:\MyCode\MyOperation\ui\resources\icons\login.png;D:\MyCode\MyOperation\ui\resources\icons\factoryMode.png;D:\MyCode\MyOperation\ui\resources\icons\start.png;D:\MyCode\MyOperation\ui\resources\icons\onlineMode.png;D:\MyCode\MyOperation\ui\resources\icons\offlineMode.png;D:\MyCode\MyOperation\ui\resources\icons\visual.png;D:\MyCode\MyOperation\ui\resources\icons\arrow-up.png;D:\MyCode\MyOperation\ui\resources\icons\autoMode.png;D:\MyCode\MyOperation\ui\resources\icons\arrow-down.png;D:\MyCode\MyOperation\ui\resources\icons\AI.png;D:\MyCode\MyOperation\ui\resources\icons\mes.png;D:\MyCode\MyOperation\ui\resources\icons\logo.png;D:\MyCode\MyOperation\ui\resources\icons\stop.png;D:\MyCode\MyOperation\ui\resources\icons\gray_io_icon.png;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\bin\rcc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\MyCode\MyOperation\build\MyOperation_autogen\DU2J4TJIAG\qrc_resources.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Automatic RCC for ui/resources/resources.qrc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd D:\MyCode\MyOperation\build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc D:/MyCode/MyOperation/build/CMakeFiles/MyOperation_autogen.dir/AutoRcc_resources_DU2J4TJIAG_Info.json MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\MyCode\MyOperation\ui\resources\resources.qrc;D:\MyCode\MyOperation\build\CMakeFiles\MyOperation_autogen.dir\AutoRcc_resources_DU2J4TJIAG_Info.json;D:\MyCode\MyOperation\ui\resources\icons\serial.png;D:\MyCode\MyOperation\ui\resources\icons\red_io_icon.png;D:\MyCode\MyOperation\ui\resources\icons\product.png;D:\MyCode\MyOperation\ui\resources\icons\motion.png;D:\MyCode\MyOperation\ui\resources\icons\pause.png;D:\MyCode\MyOperation\ui\resources\icons\cameraSetting.png;D:\MyCode\MyOperation\ui\resources\icons\gree_io_icon.png;D:\MyCode\MyOperation\ui\resources\icons\io.png;D:\MyCode\MyOperation\ui\resources\icons\chart-bar.png;D:\MyCode\MyOperation\ui\resources\icons\debugMode.png;D:\MyCode\MyOperation\ui\resources\icons\login.png;D:\MyCode\MyOperation\ui\resources\icons\factoryMode.png;D:\MyCode\MyOperation\ui\resources\icons\start.png;D:\MyCode\MyOperation\ui\resources\icons\onlineMode.png;D:\MyCode\MyOperation\ui\resources\icons\offlineMode.png;D:\MyCode\MyOperation\ui\resources\icons\visual.png;D:\MyCode\MyOperation\ui\resources\icons\arrow-up.png;D:\MyCode\MyOperation\ui\resources\icons\autoMode.png;D:\MyCode\MyOperation\ui\resources\icons\arrow-down.png;D:\MyCode\MyOperation\ui\resources\icons\AI.png;D:\MyCode\MyOperation\ui\resources\icons\mes.png;D:\MyCode\MyOperation\ui\resources\icons\logo.png;D:\MyCode\MyOperation\ui\resources\icons\stop.png;D:\MyCode\MyOperation\ui\resources\icons\gray_io_icon.png;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\bin\rcc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\MyCode\MyOperation\build\MyOperation_autogen\DU2J4TJIAG\qrc_resources.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Automatic RCC for ui/resources/resources.qrc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd D:\MyCode\MyOperation\build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc D:/MyCode/MyOperation/build/CMakeFiles/MyOperation_autogen.dir/AutoRcc_resources_DU2J4TJIAG_Info.json RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\MyCode\MyOperation\ui\resources\resources.qrc;D:\MyCode\MyOperation\build\CMakeFiles\MyOperation_autogen.dir\AutoRcc_resources_DU2J4TJIAG_Info.json;D:\MyCode\MyOperation\ui\resources\icons\serial.png;D:\MyCode\MyOperation\ui\resources\icons\red_io_icon.png;D:\MyCode\MyOperation\ui\resources\icons\product.png;D:\MyCode\MyOperation\ui\resources\icons\motion.png;D:\MyCode\MyOperation\ui\resources\icons\pause.png;D:\MyCode\MyOperation\ui\resources\icons\cameraSetting.png;D:\MyCode\MyOperation\ui\resources\icons\gree_io_icon.png;D:\MyCode\MyOperation\ui\resources\icons\io.png;D:\MyCode\MyOperation\ui\resources\icons\chart-bar.png;D:\MyCode\MyOperation\ui\resources\icons\debugMode.png;D:\MyCode\MyOperation\ui\resources\icons\login.png;D:\MyCode\MyOperation\ui\resources\icons\factoryMode.png;D:\MyCode\MyOperation\ui\resources\icons\start.png;D:\MyCode\MyOperation\ui\resources\icons\onlineMode.png;D:\MyCode\MyOperation\ui\resources\icons\offlineMode.png;D:\MyCode\MyOperation\ui\resources\icons\visual.png;D:\MyCode\MyOperation\ui\resources\icons\arrow-up.png;D:\MyCode\MyOperation\ui\resources\icons\autoMode.png;D:\MyCode\MyOperation\ui\resources\icons\arrow-down.png;D:\MyCode\MyOperation\ui\resources\icons\AI.png;D:\MyCode\MyOperation\ui\resources\icons\mes.png;D:\MyCode\MyOperation\ui\resources\icons\logo.png;D:\MyCode\MyOperation\ui\resources\icons\stop.png;D:\MyCode\MyOperation\ui\resources\icons\gray_io_icon.png;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\bin\rcc.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\MyCode\MyOperation\build\MyOperation_autogen\DU2J4TJIAG\qrc_resources.cpp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\MyCode\MyOperation\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/MyCode/MyOperation/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/MyCode/MyOperation -BD:/MyCode/MyOperation/build --check-stamp-file D:/MyCode/MyOperation/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\WindowsPaths.cmake;D:\MyCode\MyOperation\build\CMakeFiles\4.0.2\CMakeCCompiler.cmake;D:\MyCode\MyOperation\build\CMakeFiles\4.0.2\CMakeCXXCompiler.cmake;D:\MyCode\MyOperation\build\CMakeFiles\4.0.2\CMakeRCCompiler.cmake;D:\MyCode\MyOperation\build\CMakeFiles\4.0.2\CMakeSystem.cmake;D:\MyCode\MyOperation\ui\resources\resources.qrc;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5\Qt5Config.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Charts\Qt5ChartsConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Charts\Qt5ChartsConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Concurrent\Qt5ConcurrentConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Concurrent\Qt5ConcurrentConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigExtras.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigExtrasMkspecDir.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreMacros.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfigExtras.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QGifPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QICNSPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QICOPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QJpegPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QMinimalIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QOffscreenIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTgaPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTiffPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTuioTouchPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QVirtualKeyboardPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWbmpPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWebGLIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWebpPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWindowsDirect2DIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWindowsIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QXdgDesktopPortalThemePlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5LinguistTools\Qt5LinguistToolsConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5LinguistTools\Qt5LinguistToolsConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5LinguistTools\Qt5LinguistToolsMacros.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Network\Qt5NetworkConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Network\Qt5NetworkConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Network\Qt5Network_QGenericEnginePlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupport_QWindowsPrinterSupportPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBusConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBusConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_PassThruCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_PeakCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_SystecCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_TinyCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_VectorCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_VirtualCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialPort\Qt5SerialPortConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialPort\Qt5SerialPortConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5SqlConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5SqlConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5Sql_QODBCDriverPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5Sql_QPSQLDriverPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5Sql_QSQLiteDriverPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Svg\Qt5SvgConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Svg\Qt5SvgConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Svg\Qt5Svg_QSvgIconPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Svg\Qt5Svg_QSvgPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Test\Qt5TestConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Test\Qt5TestConfigExtras.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Test\Qt5TestConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5WebSockets\Qt5WebSocketsConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5WebSockets\Qt5WebSocketsConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigExtras.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsMacros.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5Widgets_QWindowsVistaStylePlugin.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\MyCode\MyOperation\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/MyCode/MyOperation/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/MyCode/MyOperation -BD:/MyCode/MyOperation/build --check-stamp-file D:/MyCode/MyOperation/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\WindowsPaths.cmake;D:\MyCode\MyOperation\build\CMakeFiles\4.0.2\CMakeCCompiler.cmake;D:\MyCode\MyOperation\build\CMakeFiles\4.0.2\CMakeCXXCompiler.cmake;D:\MyCode\MyOperation\build\CMakeFiles\4.0.2\CMakeRCCompiler.cmake;D:\MyCode\MyOperation\build\CMakeFiles\4.0.2\CMakeSystem.cmake;D:\MyCode\MyOperation\ui\resources\resources.qrc;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5\Qt5Config.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Charts\Qt5ChartsConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Charts\Qt5ChartsConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Concurrent\Qt5ConcurrentConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Concurrent\Qt5ConcurrentConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigExtras.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigExtrasMkspecDir.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreMacros.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfigExtras.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QGifPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QICNSPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QICOPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QJpegPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QMinimalIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QOffscreenIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTgaPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTiffPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTuioTouchPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QVirtualKeyboardPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWbmpPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWebGLIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWebpPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWindowsDirect2DIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWindowsIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QXdgDesktopPortalThemePlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5LinguistTools\Qt5LinguistToolsConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5LinguistTools\Qt5LinguistToolsConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5LinguistTools\Qt5LinguistToolsMacros.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Network\Qt5NetworkConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Network\Qt5NetworkConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Network\Qt5Network_QGenericEnginePlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupport_QWindowsPrinterSupportPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBusConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBusConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_PassThruCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_PeakCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_SystecCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_TinyCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_VectorCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_VirtualCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialPort\Qt5SerialPortConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialPort\Qt5SerialPortConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5SqlConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5SqlConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5Sql_QODBCDriverPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5Sql_QPSQLDriverPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5Sql_QSQLiteDriverPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Svg\Qt5SvgConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Svg\Qt5SvgConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Svg\Qt5Svg_QSvgIconPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Svg\Qt5Svg_QSvgPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Test\Qt5TestConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Test\Qt5TestConfigExtras.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Test\Qt5TestConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5WebSockets\Qt5WebSocketsConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5WebSockets\Qt5WebSocketsConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigExtras.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsMacros.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5Widgets_QWindowsVistaStylePlugin.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\MyCode\MyOperation\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/MyCode/MyOperation/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/MyCode/MyOperation -BD:/MyCode/MyOperation/build --check-stamp-file D:/MyCode/MyOperation/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\WindowsPaths.cmake;D:\MyCode\MyOperation\build\CMakeFiles\4.0.2\CMakeCCompiler.cmake;D:\MyCode\MyOperation\build\CMakeFiles\4.0.2\CMakeCXXCompiler.cmake;D:\MyCode\MyOperation\build\CMakeFiles\4.0.2\CMakeRCCompiler.cmake;D:\MyCode\MyOperation\build\CMakeFiles\4.0.2\CMakeSystem.cmake;D:\MyCode\MyOperation\ui\resources\resources.qrc;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5\Qt5Config.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Charts\Qt5ChartsConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Charts\Qt5ChartsConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Concurrent\Qt5ConcurrentConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Concurrent\Qt5ConcurrentConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigExtras.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigExtrasMkspecDir.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreMacros.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfigExtras.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QGifPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QICNSPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QICOPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QJpegPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QMinimalIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QOffscreenIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTgaPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTiffPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTuioTouchPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QVirtualKeyboardPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWbmpPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWebGLIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWebpPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWindowsDirect2DIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWindowsIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QXdgDesktopPortalThemePlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5LinguistTools\Qt5LinguistToolsConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5LinguistTools\Qt5LinguistToolsConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5LinguistTools\Qt5LinguistToolsMacros.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Network\Qt5NetworkConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Network\Qt5NetworkConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Network\Qt5Network_QGenericEnginePlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupport_QWindowsPrinterSupportPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBusConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBusConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_PassThruCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_PeakCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_SystecCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_TinyCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_VectorCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_VirtualCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialPort\Qt5SerialPortConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialPort\Qt5SerialPortConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5SqlConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5SqlConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5Sql_QODBCDriverPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5Sql_QPSQLDriverPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5Sql_QSQLiteDriverPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Svg\Qt5SvgConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Svg\Qt5SvgConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Svg\Qt5Svg_QSvgIconPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Svg\Qt5Svg_QSvgPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Test\Qt5TestConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Test\Qt5TestConfigExtras.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Test\Qt5TestConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5WebSockets\Qt5WebSocketsConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5WebSockets\Qt5WebSocketsConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigExtras.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsMacros.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5Widgets_QWindowsVistaStylePlugin.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\MyCode\MyOperation\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/MyCode/MyOperation/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/MyCode/MyOperation -BD:/MyCode/MyOperation/build --check-stamp-file D:/MyCode/MyOperation/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Linker\MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Platform\WindowsPaths.cmake;D:\MyCode\MyOperation\build\CMakeFiles\4.0.2\CMakeCCompiler.cmake;D:\MyCode\MyOperation\build\CMakeFiles\4.0.2\CMakeCXXCompiler.cmake;D:\MyCode\MyOperation\build\CMakeFiles\4.0.2\CMakeRCCompiler.cmake;D:\MyCode\MyOperation\build\CMakeFiles\4.0.2\CMakeSystem.cmake;D:\MyCode\MyOperation\ui\resources\resources.qrc;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5\Qt5Config.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5\Qt5ConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5\Qt5ModuleLocation.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Charts\Qt5ChartsConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Charts\Qt5ChartsConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Concurrent\Qt5ConcurrentConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Concurrent\Qt5ConcurrentConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigExtras.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigExtrasMkspecDir.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Core\Qt5CoreMacros.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfigExtras.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5GuiConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QGifPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QICNSPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QICOPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QJpegPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QMinimalIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QOffscreenIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTgaPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTiffPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QTuioTouchPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QVirtualKeyboardPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWbmpPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWebGLIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWebpPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWindowsDirect2DIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QWindowsIntegrationPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Gui\Qt5Gui_QXdgDesktopPortalThemePlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5LinguistTools\Qt5LinguistToolsConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5LinguistTools\Qt5LinguistToolsConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5LinguistTools\Qt5LinguistToolsMacros.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Network\Qt5NetworkConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Network\Qt5NetworkConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Network\Qt5Network_QGenericEnginePlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupportConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5PrintSupport\Qt5PrintSupport_QWindowsPrinterSupportPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBusConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBusConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_PassThruCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_PeakCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_SystecCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_TinyCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_VectorCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialBus\Qt5SerialBus_VirtualCanBusPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialPort\Qt5SerialPortConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5SerialPort\Qt5SerialPortConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5SqlConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5SqlConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5Sql_QODBCDriverPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5Sql_QPSQLDriverPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Sql\Qt5Sql_QSQLiteDriverPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Svg\Qt5SvgConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Svg\Qt5SvgConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Svg\Qt5Svg_QSvgIconPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Svg\Qt5Svg_QSvgPlugin.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Test\Qt5TestConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Test\Qt5TestConfigExtras.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Test\Qt5TestConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5WebSockets\Qt5WebSocketsConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5WebSockets\Qt5WebSocketsConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfig.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigExtras.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsConfigVersion.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5WidgetsMacros.cmake;D:\install\Qt\Qt5.12\5.12.12\msvc2017_64\lib\cmake\Qt5Widgets\Qt5Widgets_QWindowsVistaStylePlugin.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\MyCode\MyOperation\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="D:\MyCode\MyOperation\build\MyOperation_autogen\mocs_compilation_Debug.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\main.cpp" />
+    <None Include="D:\MyCode\MyOperation\ui\resources\resources.qrc">
+    </None>
+    <None Include="D:\MyCode\MyOperation\ui\ui\SerialDialog.ui">
+    </None>
+    <None Include="D:\MyCode\MyOperation\ui\ui\VisualProcess.ui">
+    </None>
+    <None Include="D:\MyCode\MyOperation\ui\ui\mainwindow.ui">
+    </None>
+    <ClCompile Include="D:\MyCode\MyOperation\src\config\SettingManager.cpp" />
+    <ClCompile Include="D:\MyCode\MyOperation\src\thread\visualWorkThread.cpp" />
+    <ClCompile Include="D:\MyCode\MyOperation\src\ui\PLCRegisterTypes.cpp" />
+    <ClCompile Include="D:\MyCode\MyOperation\src\ui\mainwindow.cpp" />
+    <ClCompile Include="D:\MyCode\MyOperation\src\ui\serialdialog.cpp" />
+    <ClCompile Include="D:\MyCode\MyOperation\src\ui\visualprocess.cpp" />
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\config\src\config_manager.cpp" />
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\config\src\user_manager.cpp" />
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\dynamic_ui\src\DynamicUIBuilder.cpp" />
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\hdevelop\src\HalconFileManager.cpp" />
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\hdevelop\src\HalconLable.cpp" />
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\libmodbus\src\modbus\modbus_benchmark.cpp" />
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\libmodbus\src\modbus\modbus_performance.cpp" />
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\libmodbus\src\modbus\modbus_rw_manager.cpp" />
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\libmodbus\src\modbus\modbusmanager.cpp" />
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\libmodbus\src\modbus\optimized_modbus_manager.cpp" />
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\log_manager\src\simplecategorylogger.cpp" />
+    <ClInclude Include="D:\MyCode\MyOperation\inc\config\SettingManager.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\inc\thread\visualWorkThread.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\inc\ui\PLCRegisterTypes.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\inc\ui\mainwindow.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\inc\ui\serialdialog.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\inc\ui\visualprocess.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\config\inc\config_manager.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\config\inc\user_manager.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\dynamic_ui\include\DynamicUIBuilder.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HBase.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HConst.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HCtype.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HDeclSpec.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HErrorDef.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HExtern.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HIntDef.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HInterfaceC.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HMacro.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HParallel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HProto.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HVersNum.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\Halcon.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HalconC.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HalconCDefs.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HalconFileManager.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HalconLable.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\IPType.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\com\HalconCOM.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\com\HalconXimport.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconc\Hdevthread.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconc\Hvector.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HBarCode.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HBarrier.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HBeadInspectionModel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HBgEsti.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HCalibData.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HCamPar.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HCameraSetupModel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HClassBox.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HClassGmm.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HClassKnn.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HClassLUT.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HClassMlp.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HClassSvm.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HClassTrainData.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HColorTransLUT.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HComponentModel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HComponentTraining.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HComputeDevice.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HCondition.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDataBase.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDataCode2D.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDeformableModel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDeformableSurfaceMatchingResult.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDeformableSurfaceModel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDescriptorModel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDevThread.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDevWindowStack.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDict.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDlClassifier.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDlClassifierResult.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDlClassifierTrainResult.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDlDevice.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDlModel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDlModelOcr.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDlPrune.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDrawingObject.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDualQuaternion.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HEvent.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HException.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HFeatureSet.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HFile.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HFramegrabber.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HFunction1D.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HGnuplot.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HHandle.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HHandleBase.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HHomMat2D.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HHomMat3D.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HIOChannel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HIODevice.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HIOStream.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HImage.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HInfo.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HLexicon.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HMatrix.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HMeasure.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HMessage.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HMessageQueue.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HMetrologyModel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HMisc.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HMutex.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HNCCModel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HOCRBox.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HOCRCnn.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HOCRKnn.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HOCRMlp.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HOCRSvm.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HOCV.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HObject.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HObjectBase.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HObjectModel3D.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HOperatorOverloads.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HOperatorSet.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HOperatorSetLegacy.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HPose.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HQuaternion.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HRegion.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HSampleIdentifier.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HScatteredDataInterpolator.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HScene3D.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HSerial.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HSerializedItem.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HShapeModel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HShapeModel3D.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HSheetOfLightModel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HSmartPtr.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HSocket.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HStereoModel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HString.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HStructuredLightModel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HSurfaceMatchingResult.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HSurfaceModel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HSystem.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HTemplate.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HTextModel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HTextResult.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HTextureInspectionModel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HTextureInspectionResult.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HTuple.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HTupleElement.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HTupleLegacy.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HVariationModel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HVector.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HWindow.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HXLD.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HXLDCont.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HXLDDistTrans.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HXLDExtPara.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HXLDModPara.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HXLDPara.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HXLDPoly.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HalconAPI.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HalconCpp.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HalconCppForwards.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HalconCppIncludes.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hclib\hclib_types.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hdevengine\HDevEngineCpp.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\CIOFrameGrab.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\CIOFrameGrabDefines.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\CIOIIDevice.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\CIOIIDeviceDefines.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\CORE1.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\DBNew.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HAlloc.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HBaseGP.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HComputeDeviceExt.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HError.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HInstance.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HInstanceDefines.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HMessageQueue.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HObjectModel3D.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HRLClip.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HXLD.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HpThread.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\IOSpy.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\libmodbus\inc\modbus\modbus-rtu.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\libmodbus\inc\modbus\modbus-tcp.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\libmodbus\inc\modbus\modbus-version.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\libmodbus\inc\modbus\modbus.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\libmodbus\inc\modbus\modbus_benchmark.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\libmodbus\inc\modbus\modbus_performance.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\libmodbus\inc\modbus\modbus_rw_manager.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\libmodbus\inc\modbus\modbusmanager.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\libmodbus\inc\modbus\optimized_modbus_manager.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\log_manager\inc\loglevel.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\log_manager\inc\simplecategorylogger.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_Debug\ui\ui\ui_SerialDialog.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_Debug\ui\ui\ui_VisualProcess.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_Debug\ui\ui\ui_mainwindow.h" />
+    <None Include="D:\MyCode\MyOperation\build\MyOperation_autogen\autouic_Debug.stamp">
+    </None>
+    <ClCompile Include="D:\MyCode\MyOperation\build\MyOperation_autogen\DU2J4TJIAG\qrc_resources.cpp" />
+    <ClCompile Include="D:\MyCode\MyOperation\build\MyOperation_autogen\mocs_compilation_Release.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_Release\ui\ui\ui_SerialDialog.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_Release\ui\ui\ui_VisualProcess.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_Release\ui\ui\ui_mainwindow.h" />
+    <None Include="D:\MyCode\MyOperation\build\MyOperation_autogen\autouic_Release.stamp">
+    </None>
+    <ClCompile Include="D:\MyCode\MyOperation\build\MyOperation_autogen\mocs_compilation_MinSizeRel.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_MinSizeRel\ui\ui\ui_SerialDialog.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_MinSizeRel\ui\ui\ui_VisualProcess.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_MinSizeRel\ui\ui\ui_mainwindow.h" />
+    <None Include="D:\MyCode\MyOperation\build\MyOperation_autogen\autouic_MinSizeRel.stamp">
+    </None>
+    <ClCompile Include="D:\MyCode\MyOperation\build\MyOperation_autogen\mocs_compilation_RelWithDebInfo.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_RelWithDebInfo\ui\ui\ui_SerialDialog.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_RelWithDebInfo\ui\ui\ui_VisualProcess.h" />
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_RelWithDebInfo\ui\ui\ui_mainwindow.h" />
+    <None Include="D:\MyCode\MyOperation\build\MyOperation_autogen\autouic_RelWithDebInfo.stamp">
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="D:\MyCode\MyOperation\build\ZERO_CHECK.vcxproj">
+      <Project>{E0589A65-A7AA-3F99-B82C-666A5CB7C7AF}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

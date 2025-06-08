@@ -117,10 +117,14 @@ private:
   // 更新LED状态
   void updateLEDState(const QString& ledName, LEDState state);
   // 更新所有IO点状态
-  void updateAllLEDs(bool connected);
+  void updateAllLEDs(bool connected);  
   /* =============================加载函数============================= */
   // 加载配置文件
   void loadConfig();
+  // 分析 Modbus 报文
+  QString analyzeModbusFrame(const QByteArray& data);
+  quint16 calculateCRC16(const quint8* data, int length);
+  bool validateAndFixCRC(QByteArray& data);
 
   Ui::SerialDialog* ui;
   QSerialPort* serialPort; // 串口对象

@@ -1,0 +1,673 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\MyCode\MyOperation\build\MyOperation_autogen\mocs_compilation_Debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\src\config\SettingManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\src\thread\visualWorkThread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\src\ui\PLCRegisterTypes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\src\ui\mainwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\src\ui\serialdialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\src\ui\visualprocess.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\config\src\config_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\config\src\user_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\dynamic_ui\src\DynamicUIBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\hdevelop\src\HalconFileManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\hdevelop\src\HalconLable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\libmodbus\src\modbus\modbus_benchmark.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\libmodbus\src\modbus\modbus_performance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\libmodbus\src\modbus\modbus_rw_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\libmodbus\src\modbus\modbusmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\libmodbus\src\modbus\optimized_modbus_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\thirdparty\log_manager\src\simplecategorylogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\build\MyOperation_autogen\DU2J4TJIAG\qrc_resources.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\build\MyOperation_autogen\mocs_compilation_Release.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\build\MyOperation_autogen\mocs_compilation_MinSizeRel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\MyCode\MyOperation\build\MyOperation_autogen\mocs_compilation_RelWithDebInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\MyCode\MyOperation\inc\config\SettingManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\inc\thread\visualWorkThread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\inc\ui\PLCRegisterTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\inc\ui\mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\inc\ui\serialdialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\inc\ui\visualprocess.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\config\inc\config_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\config\inc\user_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\dynamic_ui\include\DynamicUIBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HConst.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HCtype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HDeclSpec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HErrorDef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HExtern.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HIntDef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HInterfaceC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HMacro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HParallel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HProto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HVersNum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\Halcon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HalconC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HalconCDefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HalconFileManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\HalconLable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\IPType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\com\HalconCOM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\com\HalconXimport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconc\Hdevthread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconc\Hvector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HBarCode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HBarrier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HBeadInspectionModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HBgEsti.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HCalibData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HCamPar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HCameraSetupModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HClassBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HClassGmm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HClassKnn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HClassLUT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HClassMlp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HClassSvm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HClassTrainData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HColorTransLUT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HComponentModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HComponentTraining.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HComputeDevice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HCondition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDataBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDataCode2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDeformableModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDeformableSurfaceMatchingResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDeformableSurfaceModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDescriptorModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDevThread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDevWindowStack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDict.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDlClassifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDlClassifierResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDlClassifierTrainResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDlDevice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDlModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDlModelOcr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDlPrune.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDrawingObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HDualQuaternion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HFeatureSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HFramegrabber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HFunction1D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HGnuplot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HHandle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HHandleBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HHomMat2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HHomMat3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HIOChannel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HIODevice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HIOStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HImage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HLexicon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HMatrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HMeasure.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HMessage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HMessageQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HMetrologyModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HMisc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HMutex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HNCCModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HOCRBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HOCRCnn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HOCRKnn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HOCRMlp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HOCRSvm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HOCV.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HObjectBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HObjectModel3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HOperatorOverloads.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HOperatorSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HOperatorSetLegacy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HPose.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HQuaternion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HRegion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HSampleIdentifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HScatteredDataInterpolator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HScene3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HSerial.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HSerializedItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HShapeModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HShapeModel3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HSheetOfLightModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HSmartPtr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HSocket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HStereoModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HStructuredLightModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HSurfaceMatchingResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HSurfaceModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HTemplate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HTextModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HTextResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HTextureInspectionModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HTextureInspectionResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HTuple.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HTupleElement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HTupleLegacy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HVariationModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HXLD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HXLDCont.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HXLDDistTrans.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HXLDExtPara.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HXLDModPara.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HXLDPara.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HXLDPoly.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HalconAPI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HalconCpp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HalconCppForwards.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\halconcpp\HalconCppIncludes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hclib\hclib_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hdevengine\HDevEngineCpp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\CIOFrameGrab.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\CIOFrameGrabDefines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\CIOIIDevice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\CIOIIDeviceDefines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\CORE1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\DBNew.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HAlloc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HBaseGP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HComputeDeviceExt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HError.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HInstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HInstanceDefines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HMessageQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HObjectModel3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HRLClip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HXLD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\HpThread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\hdevelop\include\hlib\IOSpy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\libmodbus\inc\modbus\modbus-rtu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\libmodbus\inc\modbus\modbus-tcp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\libmodbus\inc\modbus\modbus-version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\libmodbus\inc\modbus\modbus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\libmodbus\inc\modbus\modbus_benchmark.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\libmodbus\inc\modbus\modbus_performance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\libmodbus\inc\modbus\modbus_rw_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\libmodbus\inc\modbus\modbusmanager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\libmodbus\inc\modbus\optimized_modbus_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\log_manager\inc\loglevel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\thirdparty\log_manager\inc\simplecategorylogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_Debug\ui\ui\ui_SerialDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_Debug\ui\ui\ui_VisualProcess.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_Debug\ui\ui\ui_mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_Release\ui\ui\ui_SerialDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_Release\ui\ui\ui_VisualProcess.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_Release\ui\ui\ui_mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_MinSizeRel\ui\ui\ui_SerialDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_MinSizeRel\ui\ui\ui_VisualProcess.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_MinSizeRel\ui\ui\ui_mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_RelWithDebInfo\ui\ui\ui_SerialDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_RelWithDebInfo\ui\ui\ui_VisualProcess.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\MyCode\MyOperation\build\MyOperation_autogen\include_RelWithDebInfo\ui\ui\ui_mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\MyCode\MyOperation\build\CMakeFiles\ea446a23cbc969aa240a494e9e364055\autouic_(CONFIG).stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\MyCode\MyOperation\build\CMakeFiles\cefe239f47223bb6ac89fb12040b584c\qrc_resources.cpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\MyCode\MyOperation\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\MyCode\MyOperation\ui\resources\resources.qrc" />
+    <None Include="D:\MyCode\MyOperation\ui\ui\SerialDialog.ui" />
+    <None Include="D:\MyCode\MyOperation\ui\ui\VisualProcess.ui" />
+    <None Include="D:\MyCode\MyOperation\ui\ui\mainwindow.ui" />
+    <None Include="D:\MyCode\MyOperation\build\MyOperation_autogen\autouic_Debug.stamp" />
+    <None Include="D:\MyCode\MyOperation\build\MyOperation_autogen\autouic_Release.stamp" />
+    <None Include="D:\MyCode\MyOperation\build\MyOperation_autogen\autouic_MinSizeRel.stamp" />
+    <None Include="D:\MyCode\MyOperation\build\MyOperation_autogen\autouic_RelWithDebInfo.stamp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{B6729FA9-D8D5-37A1-9536-E165A846B82E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{B65E60DC-C08B-337C-8345-57C553524095}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{35246789-E3E8-31E8-8CC2-F633D70E8384}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

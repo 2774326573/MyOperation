@@ -1,8 +1,31 @@
 # MyOperation Modbus通信手册
 
+## 📋 目录
+
+- [概述](#概述)
+- [Modbus协议基础](#modbus协议基础)
+- [系统架构](#系统架构)
+- [核心API参考](#核心api参考)
+- [数据类型处理](#数据类型处理)
+- [配置管理](#配置管理)
+- [串口诊断功能](#串口诊断功能) ⭐ **新增功能**
+- [错误处理和诊断](#错误处理和诊断)
+- [性能优化](#性能优化)
+- [应用示例](#应用示例)
+- [最佳实践](#最佳实践)
+- [故障排除](#故障排除)
+
+---
+
 ## 概述
 
 本手册详细介绍了MyOperation系统中Modbus通信功能的实现、配置和使用方法。系统基于libmodbus 3.1.1库实现，支持Modbus TCP和Modbus RTU两种通信协议，可与各种工业设备进行数据交换。
+
+**🔄 最新更新 (2025-06-06):**
+- ✅ 整合串口诊断功能到ModbusManager
+- ✅ 废弃独立的SerialDiagnostic和ModbusTroubleshooter类
+- ✅ 提供统一的诊断API接口
+- ✅ 增强错误处理和故障排除能力
 
 ## Modbus协议基础
 
@@ -23,11 +46,53 @@
 ## 系统架构
 
 ### 核心组件
-- **ModbusManager**: Modbus通信管理器
-- **ModbusRwManager**: 读写操作管理器
+- **ModbusManager**: Modbus通信管理器（**包含串口诊断功能**）
+- **ModbusRwManager**: 读写操作管理器（**提供诊断接口**）
 - **ModbusTcp**: TCP通信实现
 - **ModbusRtu**: RTU通信实现
 - **ModbusDevice**: 设备抽象类
+
+### 🔄 架构变更说明
+从2025年6月6日起，原有的独立诊断组件已整合：
+
+**整合前：**
+```
+ModbusManager (通信管理)
+ModbusRwManager (读写管理)
+SerialDiagnostic (串口诊断) ❌ 已废弃
+ModbusTroubleshooter (故障排除) ❌ 已废弃
+```
+
+**整合后：**
+```
+ModbusManager (通信管理 + 串口诊断) ✅
+ModbusRwManager (读写管理 + 诊断接口) ✅
+```
+
+### 迁移指南
+如果您的代码中使用了旧的诊断类，请按以下方式更新：
+
+```cpp
+// 旧代码 (不再推荐)
+#include "serial_diagnostic.h"
+#include "modbus_troubleshooter.h"
+
+SerialDiagnostic::PortInfo info = SerialDiagnostic::getPortInfo(portName);
+QString report = ModbusTroubleshooter::diagnoseSerialPort(portName);
+
+// 新代码 (推荐使用 ModbusManager)
+#include "modbusmanager.h"
+
+ModbusManager::PortInfo info = ModbusManager::getPortInfo(portName);
+QString report = ModbusManager::getPortDiagnostics(portName);
+QString report = ModbusManager::getPortDiagnostics(portName);
+
+// 或者使用 ModbusRwManager 接口
+#include "modbusrwmanager.h"
+
+ModbusManager::PortInfo info = ModbusRwManager::getPortInfo(portName);
+QString report = ModbusRwManager::getPortDiagnostics(portName);
+```
 
 ## 核心API参考
 
@@ -97,6 +162,72 @@ bool writeSingleCoil(const QString& deviceId, int address, bool value);
 bool writeSingleRegister(const QString& deviceId, int address, quint16 value);
 bool writeMultipleCoils(const QString& deviceId, int startAddress, const QVector<bool>& values);
 bool writeMultipleRegisters(const QString& deviceId, int startAddress, const QVector<quint16>& values);
+```
+
+##### 串口诊断功能 ⭐ **新增**
+```cpp
+// 串口信息结构
+struct PortInfo {
+    QString portName;        // 串口名称
+    QString description;     // 设备描述
+    QString manufacturer;    // 制造商信息
+    QString systemLocation;  // 系统位置
+    bool exists;            // 串口是否存在
+    bool accessible;        // 是否可访问
+    bool inUse;            // 是否被占用
+    QString errorString;    // 错误信息
+};
+
+// 获取系统中所有可用串口列表
+static QStringList getAvailablePorts();
+
+// 获取指定串口的详细信息
+static PortInfo getPortInfo(const QString& portName);
+
+// 测试串口连接参数
+static bool testPortConnection(const QString& portName, 
+                             int baudRate, int dataBits, 
+                             char parity, int stopBits);
+
+// 生成完整的串口诊断报告
+static QString generateDiagnosticReport();
+
+// 对特定串口进行详细诊断
+static QString diagnoseSerialPort(const QString& portName);
+
+// 获取针对特定串口的建议
+static QStringList getRecommendations(const QString& portName);
+
+// 获取通用的快速解决方案
+static QStringList getQuickFixes();
+
+// 生成系统信息报告
+static QString generateSystemInfo();
+```
+
+**诊断功能使用示例：**
+```cpp
+// 检查可用串口
+QStringList ports = ModbusManager::getAvailablePorts();
+qDebug() << "可用串口:" << ports;
+
+// 获取串口详细信息
+ModbusManager::PortInfo info = ModbusManager::getPortInfo("COM1");
+if (info.accessible) {
+    qDebug() << "串口可用，描述:" << info.description;
+} else {
+    qWarning() << "串口不可用:" << info.errorString;
+}
+
+// 生成诊断报告
+QString report = ModbusManager::generateDiagnosticReport();
+qDebug() << report;
+
+// 获取建议
+QStringList recommendations = ModbusManager::getRecommendations("COM1");
+for (const QString& rec : recommendations) {
+    qDebug() << "建议:" << rec;
+}
 ```
 
 #### 信号
@@ -221,6 +352,138 @@ connect(rwManager, &ModbusRwManager::cyclicDataReady,
 
 // 启动周期采集
 rwManager->startCyclicRead(500); // 500ms间隔
+```
+
+#### 串口诊断接口
+
+ModbusRwManager 提供了完整的串口诊断接口，方便在应用层直接调用诊断功能：
+
+##### 诊断方法列表
+
+```cpp
+class ModbusRwManager : public QObject {
+public:
+    // 串口诊断接口 - 通过内部 ModbusManager 实现
+    static QStringList getAvailablePorts();
+    static ModbusManager::PortInfo getPortInfo(const QString& portName);
+    static bool testPortConnection(const QString& portName, int baudRate = 9600, 
+                                   int dataBits = 8, char parity = 'N', int stopBits = 1);
+    static QStringList scanDevices(const QString& portName, int baudRate = 9600,
+                                   int startSlaveId = 1, int endSlaveId = 247);
+    static QString getPortDiagnostics(const QString& portName);
+    static QString getConnectionDiagnostics(const QString& portName, int baudRate, 
+                                            int dataBits, char parity, int stopBits);
+    static QString getSerialDiagnosticReport();
+    static QStringList getSerialRecommendations(const QString& portName = QString());
+    static QStringList getQuickFixes();
+};
+```
+
+##### 使用示例
+
+```cpp
+#include "modbusrwmanager.h"
+
+// 1. 获取所有可用串口
+QStringList availablePorts = ModbusRwManager::getAvailablePorts();
+qDebug() << "可用串口:" << availablePorts;
+
+// 2. 获取特定串口详细信息
+QString targetPort = "COM3";
+if (availablePorts.contains(targetPort)) {
+    ModbusManager::PortInfo portInfo = ModbusRwManager::getPortInfo(targetPort);
+    qDebug() << QString("串口 %1 信息:").arg(targetPort);
+    qDebug() << " - 描述:" << portInfo.description;
+    qDebug() << " - 制造商:" << portInfo.manufacturer;
+    qDebug() << " - 系统位置:" << portInfo.systemLocation;
+    qDebug() << " - 是否可访问:" << (portInfo.accessible ? "是" : "否");
+}
+
+// 3. 测试串口连接
+bool connectionOk = ModbusRwManager::testPortConnection(targetPort, 9600, 8, 'N', 1);
+if (connectionOk) {
+    qDebug() << "串口连接测试成功";
+    
+    // 4. 扫描Modbus设备
+    QStringList foundDevices = ModbusRwManager::scanDevices(targetPort, 9600, 1, 10);
+    qDebug() << "发现的Modbus设备:" << foundDevices;
+} else {
+    qDebug() << "串口连接测试失败";
+    
+    // 5. 获取诊断信息
+    QString diagnostics = ModbusRwManager::getPortDiagnostics(targetPort);
+    qDebug() << "端口诊断信息:" << diagnostics;
+    
+    // 6. 获取修复建议
+    QStringList recommendations = ModbusRwManager::getSerialRecommendations(targetPort);
+    qDebug() << "修复建议:";
+    for (const QString& rec : recommendations) {
+        qDebug() << " -" << rec;
+    }
+}
+
+// 7. 获取系统级诊断报告 
+QString systemReport = ModbusRwManager::getSerialDiagnosticReport();
+qDebug() << "系统诊断报告:" << systemReport;
+```
+
+##### 在项目中集成诊断功能
+
+```cpp
+class MyModbusApplication : public QWidget {
+    Q_OBJECT
+private:
+    ModbusRwManager* rwManager;
+    QComboBox* portComboBox;
+    QTextEdit* diagnosticTextEdit;
+    
+private slots:
+    void refreshPorts() {
+        portComboBox->clear();
+        QStringList ports = ModbusRwManager::getAvailablePorts();
+        portComboBox->addItems(ports);
+    }
+    
+    void runDiagnostics() {
+        QString selectedPort = portComboBox->currentText();
+        if (selectedPort.isEmpty()) return;
+        
+        // 运行完整诊断流程
+        QString report = QString("=== 串口诊断报告 ===\n\n");
+        
+        // 基本信息
+        ModbusManager::PortInfo info = ModbusRwManager::getPortInfo(selectedPort);
+        report += QString("端口: %1\n").arg(info.portName);
+        report += QString("描述: %1\n").arg(info.description);
+        report += QString("制造商: %1\n").arg(info.manufacturer);
+        report += QString("可访问: %1\n\n").arg(info.accessible ? "是" : "否");
+        
+        // 连接测试
+        bool connected = ModbusRwManager::testPortConnection(selectedPort);
+        report += QString("连接测试: %1\n\n").arg(connected ? "成功" : "失败");
+        
+        if (connected) {
+            // 设备扫描
+            QStringList devices = ModbusRwManager::scanDevices(selectedPort);
+            report += QString("发现设备: %1个\n").arg(devices.size());
+            for (const QString& device : devices) {
+                report += QString(" - %1\n").arg(device);
+            }
+        } else {
+            // 故障诊断
+            QString portDiag = ModbusRwManager::getPortDiagnostics(selectedPort);
+            report += QString("故障诊断:\n%1\n\n").arg(portDiag);
+            
+            QStringList fixes = ModbusRwManager::getSerialRecommendations(selectedPort);
+            report += "建议解决方案:\n";
+            for (const QString& fix : fixes) {
+                report += QString(" - %1\n").arg(fix);
+            }
+        }
+        
+        diagnosticTextEdit->setText(report);
+    }
+};
 ```
 
 ### 3. ModbusTcp (TCP通信)
@@ -647,10 +910,383 @@ public:
             }
         }
         
-        return true;
+        return true;    }
+};
+```
+
+## 串口诊断功能
+
+### 1. 功能概述
+
+MyOperation系统集成了强大的串口诊断功能，所有诊断工具已统一整合到`ModbusManager`类中，提供完整的串口问题检测、分析和解决方案。这些功能可以帮助开发者快速定位和解决串口通信问题。
+
+**主要功能：**
+- 🔍 串口设备自动检测
+- 📊 详细的串口信息获取
+- 🧪 串口连接测试
+- 📝 诊断报告生成
+- 💡 智能建议和快速修复
+- 🖥️ 系统信息收集
+
+### 2. 核心诊断API
+
+#### 2.1 串口信息结构
+
+```cpp
+// ModbusManager 中定义的串口信息结构
+struct PortInfo {
+    QString portName;        // 串口名称 (如 COM1, /dev/ttyS0)
+    QString description;     // 设备描述
+    QString manufacturer;    // 制造商信息
+    QString systemLocation;  // 系统位置
+    bool exists;            // 串口是否存在
+    bool accessible;        // 是否可访问
+    bool inUse;            // 是否被占用
+    QString errorString;    // 错误信息
+};
+```
+
+#### 2.2 基础诊断方法
+
+```cpp
+class ModbusManager {
+public:
+    // 获取系统中所有可用串口列表
+    static QStringList getAvailablePorts();
+    
+    // 获取指定串口的详细信息
+    static PortInfo getPortInfo(const QString& portName);
+    
+    // 测试串口连接参数
+    static bool testPortConnection(const QString& portName, 
+                                 int baudRate, int dataBits, 
+                                 char parity, int stopBits);
+    
+    // 生成完整的串口诊断报告
+    static QString generateDiagnosticReport();
+    
+    // 对特定串口进行详细诊断
+    static QString getPortDiagnostics(const QString& portName);
+    
+    // 获取针对特定串口的建议
+    static QStringList getRecommendations(const QString& portName);
+    
+    // 获取通用的快速解决方案
+    static QStringList getQuickFixes();
+    
+    // 生成系统信息报告
+    static QString generateSystemInfo();
+};
+```
+
+#### 2.3 ModbusRwManager 诊断接口
+
+ModbusRwManager 提供完整的串口诊断接口，是应用层访问诊断功能的主要入口：
+
+```cpp
+class ModbusRwManager : public QObject {
+public:
+    // 串口诊断接口 - 通过内部 ModbusManager 实现
+    static QStringList getAvailablePorts();
+    static ModbusManager::PortInfo getPortInfo(const QString& portName);
+    static bool testPortConnection(const QString& portName, int baudRate = 9600, 
+                                   int dataBits = 8, char parity = 'N', int stopBits = 1);
+    static QStringList scanDevices(const QString& portName, int baudRate = 9600,
+                                   int startSlaveId = 1, int endSlaveId = 247);
+    static QString getPortDiagnostics(const QString& portName);
+    static QString getConnectionDiagnostics(const QString& portName, int baudRate, 
+                                            int dataBits, char parity, int stopBits);
+    static QString getSerialDiagnosticReport();
+    static QStringList getSerialRecommendations(const QString& portName = QString());
+    static QStringList getQuickFixes();
+};
+```
+
+**接口特点：**
+- ✅ **静态方法设计** - 无需实例化即可使用
+- ✅ **与ModbusManager集成** - 内部调用ModbusManager的诊断功能
+- ✅ **应用层友好** - 提供高级抽象接口
+- ✅ **完整功能覆盖** - 涵盖所有串口诊断功能
+
+**推荐使用场景：**
+- 应用启动时的串口检测
+- 用户界面中的诊断工具
+- 自动化测试和验证
+- 故障排除和技术支持
+
+### 3. 诊断功能详解
+
+#### 3.1 串口检测和信息获取
+
+```cpp
+// 示例：获取所有可用串口
+QStringList ports = ModbusManager::getAvailablePorts();
+for (const QString& port : ports) {
+    qDebug() << "发现串口:" << port;
+}
+
+// 示例：获取串口详细信息
+ModbusManager::PortInfo info = ModbusManager::getPortInfo("COM1");
+qDebug() << "串口名称:" << info.portName;
+qDebug() << "设备描述:" << info.description;
+qDebug() << "制造商:" << info.manufacturer;
+qDebug() << "是否可用:" << (info.accessible ? "是" : "否");
+```
+
+#### 3.2 连接测试
+
+```cpp
+// 示例：测试串口连接
+QString portName = "COM1";
+bool canConnect = ModbusManager::testPortConnection(portName, 9600, 8, 'N', 1);
+
+if (canConnect) {
+    qDebug() << "串口连接测试成功";
+} else {
+    qDebug() << "串口连接测试失败";
+    
+    // 获取诊断建议
+    QStringList recommendations = ModbusManager::getRecommendations(portName);
+    for (const QString& rec : recommendations) {
+        qDebug() << "建议:" << rec;
+    }
+}
+```
+
+#### 3.3 诊断报告生成
+
+```cpp
+// 示例：生成完整诊断报告
+QString fullReport = ModbusManager::generateDiagnosticReport();
+qDebug() << "=== 串口诊断报告 ===";
+qDebug() << fullReport;
+
+// 示例：针对特定串口的诊断
+QString specificReport = ModbusManager::getPortDiagnostics("COM1");
+qDebug() << "=== COM1 详细诊断 ===";
+qDebug() << specificReport;
+```
+
+### 4. 实际应用示例
+
+#### 4.1 连接前的诊断检查
+
+```cpp
+bool connectWithDiagnostics(const QString& portName) {
+    // 1. 检查串口是否存在
+    ModbusManager::PortInfo portInfo = ModbusManager::getPortInfo(portName);
+    if (!portInfo.exists) {
+        qWarning() << "串口不存在:" << portName;
+        return false;
+    }
+    
+    // 2. 检查串口是否可访问
+    if (!portInfo.accessible) {
+        qWarning() << "串口不可访问:" << portInfo.errorString;
+        
+        // 显示建议
+        QStringList recommendations = ModbusManager::getRecommendations(portName);
+        for (const QString& rec : recommendations) {
+            qInfo() << "建议:" << rec;
+        }
+        return false;
+    }
+    
+    // 3. 测试连接参数
+    if (!ModbusManager::testPortConnection(portName, 9600, 8, 'N', 1)) {
+        qWarning() << "串口连接测试失败";
+        
+        // 生成详细诊断报告
+        QString report = ModbusManager::diagnoseSerialPort(portName);
+        qDebug() << report;
+        return false;
+    }
+    
+    // 4. 尝试实际连接
+    ModbusManager modbus;
+    return modbus.connectRTU(portName, 9600, 8, 'N', 1);
+}
+```
+
+#### 4.2 故障排除助手
+
+```cpp
+void troubleshootSerialIssues() {
+    qDebug() << "=== 串口故障排除助手 ===";
+    
+    // 1. 获取系统信息
+    QString systemInfo = ModbusManager::generateSystemInfo();
+    qDebug() << systemInfo;
+    
+    // 2. 检查可用串口
+    QStringList ports = ModbusManager::getAvailablePorts();
+    if (ports.isEmpty()) {
+        qWarning() << "未检测到任何串口设备";
+        
+        // 显示快速解决方案
+        QStringList fixes = ModbusManager::getQuickFixes();
+        qDebug() << "\n快速解决方案:";
+        for (const QString& fix : fixes) {
+            qDebug() << fix;
+        }
+        return;
+    }
+    
+    // 3. 逐个诊断每个串口
+    for (const QString& port : ports) {
+        qDebug() << "\n正在诊断串口:" << port;
+        QString diagnosis = ModbusManager::diagnoseSerialPort(port);
+        qDebug() << diagnosis;
+    }
+}
+```
+
+#### 4.3 自动修复建议
+
+```cpp
+class SerialPortAssistant {
+public:
+    static void autoFixSerialIssues(const QString& portName) {
+        ModbusManager::PortInfo info = ModbusManager::getPortInfo(portName);
+        
+        if (!info.exists) {
+            qWarning() << "串口不存在，可能的原因：";
+            qWarning() << "1. 设备未连接";
+            qWarning() << "2. 驱动程序未安装";
+            qWarning() << "3. 设备故障";
+            return;
+        }
+        
+        if (info.inUse) {
+            qWarning() << "串口被占用，建议：";
+            qWarning() << "1. 关闭其他使用该串口的程序";
+            qWarning() << "2. 检查设备管理器中的串口状态";
+            qWarning() << "3. 重启应用程序";
+        }
+        
+        if (!info.accessible) {
+            qWarning() << "串口不可访问，建议：";
+            qWarning() << "1. 以管理员权限运行程序";
+            qWarning() << "2. 检查串口权限设置";
+            qWarning() << "3. 重新安装串口驱动";
+        }
+        
+        // 获取系统生成的建议
+        QStringList recommendations = ModbusManager::getRecommendations(portName);
+        if (!recommendations.isEmpty()) {
+            qInfo() << "\n系统建议：";
+            for (const QString& rec : recommendations) {
+                qInfo() << rec;
+            }
+        }
     }
 };
 ```
+
+### 5. 与现有代码的集成
+
+#### 5.1 替换旧的诊断代码
+
+**旧代码（已废弃）：**
+```cpp
+// 不再使用
+#include "serial_diagnostic.h"
+#include "serial_diagnostic.h"
+#include "modbus_troubleshooter.h"
+
+SerialDiagnostic::PortInfo info = SerialDiagnostic::getPortInfo(portName);
+QString report = ModbusTroubleshooter::diagnoseSerialPort(portName);
+```
+
+**新代码（推荐）：**
+```cpp
+// 直接使用 ModbusManager
+#include "modbusmanager.h"
+
+ModbusManager::PortInfo info = ModbusManager::getPortInfo(portName);
+QString report = ModbusManager::getPortDiagnostics(portName);
+QString report = ModbusManager::getPortDiagnostics(portName);
+```
+
+#### 5.2 在现有应用中添加诊断功能
+
+```cpp
+class SerialDialog : public QDialog {
+private slots:
+    void onDiagnosePort() {
+        QString portName = portComboBox->currentText();
+          // 生成诊断报告
+        QString report = ModbusManager::getPortDiagnostics(portName);
+        
+        // 显示在对话框中
+        QMessageBox::information(this, "串口诊断报告", report);
+        
+        // 获取建议
+        QStringList recommendations = ModbusManager::getRecommendations(portName);
+        if (!recommendations.isEmpty()) {
+            QString tips = "建议：\n" + recommendations.join("\n");
+            QMessageBox::information(this, "诊断建议", tips);
+        }
+    }
+};
+```
+
+### 6. 诊断信息格式
+
+诊断报告包含以下信息：
+
+```
+=== 串口诊断报告 ===
+扫描时间: 2025-06-06 14:30:00
+
+系统信息:
+- 操作系统: Windows 10
+- Qt版本: 5.15.2
+- 串口驱动: 已安装
+
+可用串口: COM1, COM3, COM4
+
+COM1 详细信息:
+- 描述: USB Serial Port
+- 制造商: FTDI
+- 位置: \\.\COM1
+- 状态: 可用
+- 占用: 否
+- 测试结果: 连接成功 (9600,8,N,1)
+
+建议:
+- 串口工作正常，可以使用
+- 建议波特率: 9600, 19200, 115200
+```
+
+### 7. 最佳实践
+
+1. **在连接前总是进行诊断**
+   ```cpp
+   if (!ModbusManager::getPortInfo(portName).accessible) {
+       // 处理不可访问的情况
+       return;
+   }
+   ```
+
+2. **保存诊断日志**
+   ```cpp
+   QString report = ModbusManager::generateDiagnosticReport();
+   // 保存到日志文件
+   ```
+
+3. **用户友好的错误提示**
+   ```cpp
+   QStringList fixes = ModbusManager::getQuickFixes();
+   // 显示给用户
+   ```
+
+4. **定期检查串口状态**
+   ```cpp
+   QTimer* timer = new QTimer(this);
+   connect(timer, &QTimer::timeout, this, &MyClass::checkSerialPorts);
+   timer->start(30000); // 每30秒检查一次
+   ```
 
 ## 错误处理和诊断
 
@@ -749,6 +1385,8 @@ private:
     };
     
     QMap<QString, ReconnectInfo> reconnectInfos;
+    QMutex poolMutex;
+    int maxConnections;
     
 public:
     ModbusReconnectManager(QObject* parent = nullptr) : QObject(parent) {}
@@ -1247,59 +1885,206 @@ int main(int argc, char *argv[]) {
 #include "main.moc"
 ```
 
-## 最佳实践
+## 📚 快速参考
 
-### 1. 通信设计原则
-- 合理设置超时时间
-- 实现重连机制
-- 使用连接池管理
-- 避免频繁连接断开
+### 串口诊断功能快速指南
 
-### 2. 数据处理建议
-- 使用适当的数据类型转换
-- 实现数据验证和范围检查
-- 使用缓存减少网络负载
-- 批量读写提高效率
+#### 基本诊断方法
+```cpp
+// 通过 ModbusManager 使用
+#include "modbusmanager.h"
 
-### 3. 错误处理策略
-- 分类处理不同类型的错误
-- 记录详细的错误日志
-- 实现自动恢复机制
-- 提供用户友好的错误提示
+// 1. 获取可用串口
+QStringList ports = ModbusManager::getAvailablePorts();
 
-### 4. 性能优化要点
-- 使用异步通信避免阻塞
-- 合理配置轮询间隔
-- 实现智能的数据更新策略
-- 优化网络参数配置
+// 2. 获取串口信息
+ModbusManager::PortInfo info = ModbusManager::getPortInfo("COM1");
 
-## 故障排除
+// 3. 测试连接
+bool ok = ModbusManager::testPortConnection("COM1", 9600, 8, 'N', 1);
 
-### 常见问题及解决方案
+// 4. 生成诊断报告
+QString report = ModbusManager::getSerialDiagnosticReport();
 
-#### 1. 连接超时
-**问题**: 无法连接到Modbus设备
-**解决方案**:
-- 检查网络连接和设备IP地址
-- 确认防火墙设置
-- 调整连接超时时间
-- 验证设备是否支持Modbus协议
+// 5. 获取建议
+QStringList tips = ModbusManager::getSerialRecommendations("COM1");
+```
 
-#### 2. 数据读取失败
-**问题**: 读取操作返回错误
-**解决方案**:
-- 确认寄存器地址和数量
-- 检查设备从站ID
-- 验证功能码支持
-- 确认设备权限设置
+#### 通过 ModbusRwManager 使用
+```cpp
+// 通过 ModbusRwManager 使用（推荐用于应用层）
+#include "modbusrwmanager.h"
 
-#### 3. 通信不稳定
-**问题**: 间歇性通信失败
-**解决方案**:
-- 检查网络质量和延迟
-- 调整响应超时时间
-- 实现重试机制
-- 使用诊断工具监控通信状态
+// 所有方法都是静态的，无需实例化
+QStringList ports = ModbusRwManager::getAvailablePorts();
+ModbusManager::PortInfo info = ModbusRwManager::getPortInfo("COM1");
+bool ok = ModbusRwManager::testPortConnection("COM1");
+QStringList devices = ModbusRwManager::scanDevices("COM1");
+QString report = ModbusRwManager::getSerialDiagnosticReport();
+```
+
+#### 诊断流程模板
+```cpp
+void diagnoseAndConnect(const QString& portName) {
+    // 1. 检查串口基本信息
+    ModbusManager::PortInfo info = ModbusRwManager::getPortInfo(portName);
+    if (!info.exists) {
+        qWarning() << "串口不存在:" << portName;
+        return;
+    }
+    
+    // 2. 测试连接
+    if (!ModbusRwManager::testPortConnection(portName)) {
+        // 3. 获取诊断信息
+        QString diagnostics = ModbusRwManager::getPortDiagnostics(portName);
+        qDebug() << "诊断信息:" << diagnostics;
+        
+        // 4. 获取修复建议
+        QStringList recommendations = ModbusRwManager::getSerialRecommendations(portName);
+        for (const QString& rec : recommendations) {
+            qInfo() << "建议:" << rec;
+        }
+        return;
+    }
+    
+    // 5. 扫描设备
+    QStringList devices = ModbusRwManager::scanDevices(portName);
+    qDebug() << "发现设备:" << devices;
+    
+    // 6. 建立实际连接
+    // ... 你的连接代码 ...
+}
+```
+
+### 常用错误处理模式
+
+#### 错误码处理
+```cpp
+ModbusErrorCode handleModbusOperation() {
+    try {
+        // 执行 Modbus 操作
+        QVector<quint16> values = modbusManager->readHoldingRegisters("PLC01", 0, 10);
+        return MODBUS_SUCCESS;
+    } catch (const ModbusException& e) {
+        qWarning() << "Modbus error:" << e.what();
+        
+        if (ModbusErrorHandler::isRetryableError(e.errorCode())) {
+            // 可重试错误
+            return e.errorCode();
+        } else {
+            // 致命错误，需要重新连接
+            modbusManager->reconnectDevice("PLC01");
+            return e.errorCode();
+        }
+    }
+}
+```
+
+#### 自动重连模式
+```cpp
+class AutoReconnectModbus : public QObject {
+    Q_OBJECT
+private:
+    ModbusManager* manager;
+    QTimer* reconnectTimer;
+    int retryCount;
+    
+public slots:
+    void onDeviceDisconnected(const QString& deviceId) {
+        retryCount = 0;
+        reconnectTimer->start(1000); // 1秒后开始重连
+    }
+    
+    void attemptReconnect() {
+        if (retryCount < 5) { // 最多重试5次
+            if (manager->connectDevice("PLC01")) {
+                reconnectTimer->stop();
+                retryCount = 0;
+                qInfo() << "重连成功";
+            } else {
+                retryCount++;
+                reconnectTimer->start(retryCount * 2000); // 递增延迟
+            }
+        } else {
+            reconnectTimer->stop();
+            qError() << "重连失败，已达到最大重试次数";
+        }
+    }
+};
+```
+
+### 配置文件模板
+
+#### 基本设备配置
+```json
+{
+    "modbus_devices": [
+        {
+            "id": "MainPLC",
+            "type": "tcp",
+            "ip_address": "192.168.1.100",
+            "port": 502,
+            "slave_id": 1,
+            "connection_timeout": 5000,
+            "response_timeout": 1000,
+            "auto_connect": true,
+            "retry_count": 3,
+            "retry_interval": 2000
+        },
+        {
+            "id": "Sensor01",
+            "type": "rtu", 
+            "port_name": "COM1",
+            "baud_rate": 9600,
+            "parity": "N",
+            "data_bits": 8,
+            "stop_bits": 1,
+            "slave_id": 2,
+            "auto_connect": true
+        }
+    ]
+}
+```
+
+### 性能优化清单
+
+#### ✅ 连接优化
+- [ ] 使用连接池避免频繁创建连接
+- [ ] 合理设置超时参数
+- [ ] 实现智能重连机制
+- [ ] 批量操作减少网络开销
+
+#### ✅ 数据处理优化  
+- [ ] 使用数据缓存减少重复读取
+- [ ] 实现增量更新策略
+- [ ] 合理的轮询间隔设置
+- [ ] 异步处理避免界面卡顿
+
+#### ✅ 错误处理优化
+- [ ] 分类处理不同错误类型
+- [ ] 记录详细的操作日志
+- [ ] 实现故障自动恢复
+- [ ] 用户友好的错误提示
+
+### 故障排除检查清单
+
+#### 🔧 连接问题
+- [ ] 检查网络连通性 (`ping` 目标设备)
+- [ ] 验证端口和IP地址配置
+- [ ] 确认防火墙和安全软件设置
+- [ ] 检查设备是否支持Modbus协议
+
+#### 🔧 串口问题  
+- [ ] 确认串口设备已连接
+- [ ] 检查串口参数配置（波特率、数据位等）
+- [ ] 验证串口权限和占用情况
+- [ ] 测试串口硬件功能
+
+#### 🔧 数据问题
+- [ ] 验证寄存器地址和范围
+- [ ] 检查数据类型转换正确性
+- [ ] 确认设备从站ID配置
+- [ ] 测试功能码支持情况
 
 ---
 

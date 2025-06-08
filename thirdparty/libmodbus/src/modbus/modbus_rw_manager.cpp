@@ -388,4 +388,30 @@ QVector<bool> ModbusRwManager::parseWriteBoolValues(const QString& input, int co
     }
     
     return values;
-} 
+}
+
+// ================= 串口诊断功能实现 (Serial Diagnostic Functions Implementation) =================
+
+QStringList ModbusRwManager::getAvailablePorts()
+{
+    return ModbusManager::getAvailablePorts();
+}
+
+QString ModbusRwManager::getSerialDiagnosticReport(const QString &portName)
+{
+    if (portName.isEmpty()) {
+        return ModbusManager::generateDiagnosticReport();
+    } else {
+        return ModbusManager::diagnoseSerialPort(portName);
+    }
+}
+
+QStringList ModbusRwManager::getSerialRecommendations(const QString &portName)
+{
+    return ModbusManager::getRecommendations(portName);
+}
+
+QStringList ModbusRwManager::getQuickFixes()
+{
+    return ModbusManager::getQuickFixes();
+}
